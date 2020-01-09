@@ -1,0 +1,54 @@
+@import "../../node_modules/bootstrap/scss/bootstrap-grid.scss";
+
+body {
+  color: #333;
+  background-color: #ffffff;
+  font-family: sans-serif;
+}
+
+h1 {
+  font-size: 3rem;
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+  &:hover {
+    color: #00d8d8;
+  }
+}
+
+.blog-summary-container {
+  margin-bottom: 4rem;
+}
+
+.content {
+  max-width: 768px;
+  margin: 4rem auto;
+}
+
+.main-title {
+  text-align: center;
+}
+
+.main-subtitle {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.next-prev-links {
+  margin-top: 4rem;
+  .left {
+    text-align: left;
+  }
+  .right {
+    text-align: right;
+  }
+}
+
+.back-to-list {
+  margin-top: 2rem;
+  text-align: center;
+}
+

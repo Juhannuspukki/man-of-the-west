@@ -1,5 +1,27 @@
 {{ define "main" }} {{ $section := .Site.GetPage "section" .Section }}
-<article class="content">
-  <main>{{- .Content -}}</main>
-</article>
+<div class="content">
+  <article>
+    <main>
+      <h1>{{ .Params.Title }}</h1>
+      {{- .Content -}}
+    </main>
+  </article>
+  <div class="row next-prev-links">
+    <div class="col-md-6 left">
+      {{ with .NextInSection }}
+      <a href="{{ .Permalink }}"><- Seuraava: {{ .Date.Format " 2.1.2006"}} {{ .Title }}</a>
+      {{ end }}
+    </div>
+    <div class="col-md-6 right">
+      {{ with .PrevInSection }}
+      <a href="{{ .Permalink }}">Edellinen: {{ .Date.Format " 2.1.2006"}} - {{ .Title }} -></a>
+      {{ end }}
+    </div>
+    
+  </div>
+  <div class="back-to-list">
+    <a href="/">Takaisin etusivulle</a>
+  </div>
+</div>
+
 {{ end }}
