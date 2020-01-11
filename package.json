@@ -19,6 +19,7 @@
     "build:hugo:preview": "npm run build:hugo -- -D -F",
     "build:webpack": "cross-env NODE_ENV=production webpack --config webpack.prod.js"
   },
+  "engines" : { "node" : "12.10.0" },
   "author": "",
   "license": "MIT",
   "devDependencies": {
