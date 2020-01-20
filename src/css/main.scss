@@ -46,6 +46,9 @@ figure {
   a {
     text-decoration: underline;
   }
+  .no-underline {
+    text-decoration: none;
+  }
 }
 
 .main-title {
@@ -71,4 +74,3 @@ figure {
   margin-top: 2rem;
   text-align: center;
 }
-

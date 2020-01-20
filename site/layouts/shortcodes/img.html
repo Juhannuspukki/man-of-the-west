@@ -3,7 +3,7 @@
 
 {{ $resizedLarge := $imageResource.Resize "768x q80"}}
 
-<a href="{{ $imageResource.RelPermalink }}">
+<a href="{{ $imageResource.RelPermalink }}" class="no-underline">
   <figure>
     <img class="blog-picture" src="{{ $resizedLarge.RelPermalink }}" {{ with .Get "alt" }}alt="{{.}}"{{ else }}alt=""{{ end }}>
     {{ with .Get "caption" }}<figcaption>{{.}}</figcaption>{{ end }}
