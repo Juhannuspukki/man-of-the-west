@@ -3,6 +3,7 @@ languageCode = "en-us"
 languageLang = "en"
 title = "Lännen mies"
 summaryLength = 30
+timeout = 20000
 
 # RSS, categories and tags disabled for an easy start
 # See configuration options for more details:
