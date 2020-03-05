@@ -1,27 +1,32 @@
 {{ define "main" }} {{ $section := .Site.GetPage "section" .Section }}
-<div class="container content">
-  <article>
-    <main>
-      <h1>{{ .Params.Title }}</h1>
-      {{- .Content -}}
-    </main>
-  </article>
-  <div class="row next-prev-links">
-    <div class="col-md-6 left">
-      {{ with .NextInSection }}
-      <a href="{{ .Permalink }}"><- Seuraava: {{ .Date.Format " 2.1.2006"}} {{ .Title }}</a>
-      {{ end }}
-    </div>
-    <div class="col-md-6 right">
-      {{ with .PrevInSection }}
-      <a href="{{ .Permalink }}">Edellinen: {{ .Date.Format " 2.1.2006"}} - {{ .Title }} -></a>
-      {{ end }}
-    </div>
-    
+
+<main>
+  <div class="main-title-container">
+    <a href="/">
+      <h1 class="main-title">{{ .Params.Title }}</h1>
+      <p class="main-subtitle"><strong>{{ .Date.Format " 2.1.2006"}}</strong></p>
+    </a>
+    <a class="translate-link" aria-label="Translate with Google Translate" target="_blank" href='https://translate.google.com/translate?hl=&sl=fi&tl=en&u=https%3A%2F%2Fman-of-the-west.now.sh%2Fposts%2F{{ .Date.Format "2006-01-02" }}%2F'>
+      <svg width="100pt" height="100pt" version="1.1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <g>
+          <path d="m66.359 37h7.8984l18.742 51.645h-7.6641l-5.3906-15.469h-20.262l-5.6016 15.469h-7.1719zm11.602 30.48l-7.9492-22.816-8.2656 22.816z"/>
+          <path d="m59 73c-10-4-16-9-22-14 0 0 1.2539 1.2539 0 0-6 5-20 13-20 13l-4-6c8-5 10-6 19-13-2.0625-1.918-12-13-13-19h8c4 9 10 14 10 14 10-8 10-19 10-19h8s-1 13-12 24c5 5 10 9 19 13zm-52-44h56v-8h-23v-7h-9v7h-24z"/>
+        </g>
+      </svg>
+    </a>
   </div>
-  <div class="back-to-list">
-    <a href="/">Takaisin etusivulle</a>
+  {{ if .Params.banner }}
+    {{ $imageResource := ($.Site.GetPage "section" "uploads").Resources.GetMatch (strings.TrimPrefix "/uploads/" .Params.banner) }}
+    {{ $resizedHero := $imageResource.Resize "1080x q80"}}
+    <div class="hero" style='background-image: url("{{ $resizedHero.RelPermalink }}")'></div>
+  {{ end }}
+  <div class="content">
+    <article>
+        {{- .Content -}}
+    </article>
   </div>
-</div>
+</main>
+
+{{ block "bottom-nav" . }}{{ partial "bottom-nav" . }}{{end}}
 
 {{ end }}

@@ -1,16 +1,19 @@
 {{ define "main" }}
 
-<div class="container">
+{{ $imageResource := ($.Site.GetPage "section" "uploads").Resources.GetMatch (strings.TrimPrefix "/uploads/" .Params.hero) }}
+{{ $resizedHero := $imageResource.Resize "960x q80"}}
+
+<div class="main-title-container">
   <h1 class="main-title">Lännen mies</h1>
   <p class="main-subtitle">Pohjois-Bangkokin ainoan länsimaalaisen kertomuksia</p>
+</div>
+<div class="hero" style='background-image: url("{{ $resizedHero.RelPermalink }}")'>
+</div>
+<div class="content">
+  <h2>Kertomukset</h2>
   <div class="row">
     {{ range ((.Data.Pages).ByParam "date").Reverse }}
-    <a class="col-md-4 blog-summary-container" href="{{ .RelPermalink }}">
-      <strong>{{ .Date.Format " 2.1.2006"}}</strong>
-      <p>{{ .Title }}</p>
-      <p>{{ .Summary }}</p>
-      <span class="read-more">Lisää -></span>
-    </a>
+      {{ block "card" . }}{{ partial "card" . }}{{end}}
     {{ end }}
   </div>
 </div>

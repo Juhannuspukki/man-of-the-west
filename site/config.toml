@@ -1,6 +1,6 @@
 baseurl = "/"
-languageCode = "en-us"
-languageLang = "en"
+languageCode = "fi"
+languageLang = "fi"
 title = "Lännen mies"
 summaryLength = 30
 timeout = 20000
