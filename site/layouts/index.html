@@ -12,7 +12,7 @@
 <div class="content">
   <h2>Kertomukset</h2>
   <div class="row">
-    {{ range ((.Data.Pages).ByParam "date").Reverse }}
+    {{ range ((.Data.Pages).ByParam "date") }}
       {{ block "card" . }}{{ partial "card" . }}{{end}}
     {{ end }}
   </div>
