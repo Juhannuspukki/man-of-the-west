@@ -4,15 +4,15 @@
 {{ $resizedHero := $imageResource.Resize "960x q80"}}
 
 <div class="main-title-container">
-  <h1 class="main-title">Lännen mies</h1>
+  <h1 class="main-title">Mies lännestä</h1>
   <p class="main-subtitle">Pohjois-Bangkokin ainoan länsimaalaisen kertomuksia</p>
 </div>
 <div class="hero" style='background-image: url("{{ $resizedHero.RelPermalink }}")'>
 </div>
-<div class="content">
+<div class="container">
   <h2>Kertomukset</h2>
   <div class="row">
-    {{ range ((.Data.Pages).ByParam "date") }}
+    {{ range where .Site.RegularPages "Type" "posts" }}
       {{ block "card" . }}{{ partial "card" . }}{{end}}
     {{ end }}
   </div>

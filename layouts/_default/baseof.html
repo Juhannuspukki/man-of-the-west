@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="{{ $.Site.Language.Lang }}">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <base href="{{ $.Site.BaseURL }}">
+  <title>{{ .Title }} - {{ $.Site.Title }}</title>
+  
+  <meta property="og:title" content="{{ $.Site.Title }} - {{ .Title }}" />
+  <meta name="description" content="Mies lännestä kertoo elämästä Thaimassa.">
+  <meta property="og:description" content="Mies lännestä kertoo elämästä Thaimassa.">
+
+  {{ $options := (dict "targetPath" "style.css" "outputStyle" "compressed" "enableSourceMap" (not hugo.IsProduction) "includePaths" (slice "node_modules/myscss")) }}
+  {{ $style := resources.Get "scss/index.scss" | resources.ToCSS $options }}
+  <link rel="stylesheet" href="{{ $style.RelPermalink }}" />
+
+</head>
+
+<body>
+    {{ block "header" . }}{{ partial "header" . }}{{end}}
+  
+    {{ block "main" . }}{{end}}
+  
+    {{ block "footer" . }}{{ partial "footer" . }}{{end}}
+</body>
+
+</html>
