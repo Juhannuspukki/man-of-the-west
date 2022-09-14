@@ -11,8 +11,7 @@
   <meta name="description" content="Mies lännestä kertoo elämästä Thaimassa.">
   <meta property="og:description" content="Mies lännestä kertoo elämästä Thaimassa.">
 
-  {{ $options := (dict "targetPath" "style.css" "outputStyle" "compressed" "enableSourceMap" (not hugo.IsProduction) "includePaths" (slice "node_modules/myscss")) }}
-  {{ $style := resources.Get "scss/index.scss" | resources.ToCSS $options }}
+  {{ $style := resources.Get "scss/index.scss" | resources.ToCSS }}
   <link rel="stylesheet" href="{{ $style.RelPermalink }}" />
 
 </head>
