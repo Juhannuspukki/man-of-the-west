@@ -1,0 +1,8 @@
+
+{{ $videoResource := ($.Site.GetPage "section" "uploads").Resources.GetMatch (strings.TrimPrefix "/uploads/" (.Get "src")) }}
+
+<figure>
+    <video autoplay loop muted playsinline src="{{ $videoResource.RelPermalink }}"></video>
+    {{ with .Get "caption" }}<figcaption>{{.}}</figcaption>{{ end }}
+</figure>
+

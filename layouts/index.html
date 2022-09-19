@@ -1,21 +1,22 @@
 {{ define "main" }}
 
-{{ $imageResource := ($.Site.GetPage "section" "uploads").Resources.GetMatch (strings.TrimPrefix "/uploads/" .Params.hero) }}
-{{ $resizedHero := $imageResource.Resize "960x q80"}}
+{{ $imageResource := ($.Site.GetPage "section" "uploads").Resources.GetMatch (strings.TrimPrefix "/uploads/" .Params.banner) }}
+{{ $resizedHero := $imageResource.Resize "x800 q90"}}
 
-<div class="main-title-container">
-  <h1 class="main-title">Mies lännestä</h1>
-  <p class="main-subtitle">Pohjois-Bangkokin ainoan länsimaalaisen kertomuksia</p>
-</div>
-<div class="hero" style='background-image: url("{{ $resizedHero.RelPermalink }}")'>
-</div>
 <div class="container">
-  <h2>Kertomukset</h2>
-  <div class="row">
-    {{ range where .Site.RegularPages "Type" "posts" }}
-      {{ block "card" . }}{{ partial "card" . }}{{end}}
-    {{ end }}
-  </div>
+  <nav class="chapters">
+    <a href="/" class="chapter-link active">
+      <p>Osa II</p>
+      <h2>Pako hyisestä helvetistä</h2>
+    </a>
+    <a href="/part-i" class="chapter-link">
+      <p>Osa I</p>
+      <h2>Vaihto-opiskelupäiväkirjat</h2>
+    </a>
+  </nav>
+  {{ range (where .Site.RegularPages "Type" "part-ii").Reverse }}
+    {{ block "card" . }}{{ partial "h-card" . }}{{end}}
+  {{ end }}
 </div>
 
 {{ end }}

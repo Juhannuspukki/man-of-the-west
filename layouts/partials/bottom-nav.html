@@ -1,21 +1,16 @@
-<nav>
-  <div class="content">
-    <div class="row bottom-nav">
-      <div class="col-md-6 left">
-        {{ with .NextInSection }}
-          <h2>Seuraava</h2>
-          {{ partial "card" . }}
-        {{ end }}
-      </div>
-      <div class="col-md-6 right">
-        {{ with .PrevInSection }}
-          <h2>Edellinen</h2>
-          {{ partial "card" . }}
-        {{ end }}
-      </div>
+<nav class="bottom-nav">
+    <div class="container bottom-grid">
+        <div>
+            {{ with .PrevInSection }}
+                <h2>Edellinen</h2>
+                {{ partial "h-card" . }}
+            {{ end }}
+        </div>
+        <div>
+            {{ with .NextInSection }}
+                <h2>Seuraava</h2>
+                {{ partial "h-card" . }}
+            {{ end }}
+        </div>
     </div>
-    <div class="back-to-list">
-      <a href="/">Takaisin etusivulle</a>
-    </div>
-  </div>
 </nav>

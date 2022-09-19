@@ -1,0 +1,19 @@
+{{ define "main" }}
+
+<div class="container">
+  <nav class="chapters">
+    <a href="/" class="chapter-link">
+      <p>Osa II</p>
+      <h2>Pako hyisestä helvetistä</h2>
+    </a>
+    <a href="/part-i" class="chapter-link active">
+      <p>Osa I</p>
+      <h2>Vaihto-opiskelupäiväkirjat</h2>
+    </a>
+  </nav>
+  {{ range .Pages.Reverse }}
+    {{ block "card" . }}{{ partial "h-card" . }}{{end}}
+  {{ end }}
+</div>
+
+{{ end }}
