@@ -7,7 +7,7 @@
     {{ $label := index $arg 1 }}
 
     {{ $imageResource := ($.Site.GetPage "section" "uploads").Resources.GetMatch (strings.TrimPrefix "/uploads/" $image) }}
-    {{ $resizedLarge := $imageResource.Resize "768x q80"}}
+    {{ $resizedLarge := $imageResource.Resize "768x q80 webp"}}
 
     <a href="{{ $imageResource.RelPermalink }}" class="no-underline">
       <figure>

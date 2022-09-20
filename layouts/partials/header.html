@@ -1,6 +1,6 @@
 {{ if .Params.banner }}
     {{ $imageResource := ($.Site.GetPage "section" "uploads").Resources.GetMatch (strings.TrimPrefix "/uploads/" .Params.banner) }}
-    {{ $resizedHero := $imageResource.Resize "1920x q90"}}
+    {{ $resizedHero := $imageResource.Resize "1920x q90 webp"}}
 
     <header>
         <nav><p class="nav-title">{{ if not .Params.noNavTitle }}<a href="/">Mies Lännestä</a>{{end}}</p></nav>

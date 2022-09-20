@@ -1,8 +1,5 @@
 {{ define "main" }}
 
-{{ $imageResource := ($.Site.GetPage "section" "uploads").Resources.GetMatch (strings.TrimPrefix "/uploads/" .Params.banner) }}
-{{ $resizedHero := $imageResource.Resize "x800 q90"}}
-
 <div class="container">
   <nav class="chapters">
     <a href="/" class="chapter-link active">

@@ -1,7 +1,5 @@
 {{ define "main" }} {{ $section := .Site.GetPage "section" .Section }}
 
-{{ $imageResource := ($.Site.GetPage "section" "uploads").Resources.GetMatch (strings.TrimPrefix "/uploads/" .Params.banner) }}
-{{ $resizedHero := $imageResource.Resize "1080x q80"}}
 <main>
     <div class="content">
         {{ with .Params.song }}
