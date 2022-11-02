@@ -1,0 +1,15 @@
+<a class="h-card no-underline" href="{{ .RelPermalink }}">
+  {{ if .Params.banner }}
+  {{ $imageResource := ($.Site.GetPage "section" "uploads").Resources.GetMatch (strings.TrimPrefix "/uploads/" .Params.banner) }}
+  {{ $resizedBanner := $imageResource.Fill "420x220 q90 webp" }}
+  <img class="h-card-banner" src="{{ $resizedBanner.RelPermalink }}" alt="Thumbnail image"/>
+  {{ end }}
+  <div class="h-card-summary-container">
+    <p class="time">
+      <strong>{{ .Date.Format " 2006/01/02"}}</strong>
+    </p>
+    <h2>{{ .Title }}</h2>
+    <p class="summary">{{ .Summary }}</p>
+    <span class="read-more"><strong>Lisää&nbsp;→</strong></span>
+  </div>
+</a>

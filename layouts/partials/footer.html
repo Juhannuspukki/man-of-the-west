@@ -1,15 +1,17 @@
 <footer>
-  <p>Bangkokin aika</p>
-  <p id="clock"></p>
+  <div class="footer-container">
+    <h2>Bangkokin aika</h2>
+    <p id="clock"></p>
+  </div>
   <script>
-    function startTime() {
+    const startTime = () =>{
       const d = new Date();
 
       const utc = d.getTime() + (d.getTimezoneOffset() * 60000);
 
       const nd = new Date(utc + (3600000*7));
 
-      document.getElementById('clock').innerHTML = "" + nd.toLocaleString();
+      document.getElementById('clock').innerHTML = nd.toLocaleTimeString();
 
       setTimeout(startTime, 500);
     }

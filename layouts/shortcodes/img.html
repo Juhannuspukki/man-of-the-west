@@ -1,11 +1,19 @@
+{{ $images := split (.Get "src") ";" }}
 
-{{ $imageResource := ($.Site.GetPage "section" "uploads").Resources.GetMatch (strings.TrimPrefix "/uploads/" (.Get "src")) }}
+<div class="row">
+  {{ range $images }}
+    {{ $arg := split . ":" }}
+    {{ $image := index $arg 0 }}
+    {{ $label := index $arg 1 }}
 
-{{ $resizedLarge := $imageResource.Resize "768x q80"}}
+    {{ $imageResource := ($.Site.GetPage "section" "uploads").Resources.GetMatch (strings.TrimPrefix "/uploads/" $image) }}
+    {{ $resizedLarge := $imageResource.Resize "768x q80 webp"}}
 
-<a href="{{ $imageResource.RelPermalink }}" class="no-underline">
-  <figure>
-    <img class="blog-picture" src="{{ $resizedLarge.RelPermalink }}" {{ with .Get "alt" }}alt="{{.}}"{{ else }}alt=""{{ end }}>
-    {{ with .Get "caption" }}<figcaption>{{.}}</figcaption>{{ end }}
-  </figure>
-</a>
+    <a href="{{ $imageResource.RelPermalink }}" class="no-underline">
+      <figure>
+        <img class="blog-picture" src="{{ $resizedLarge.RelPermalink }}" {{ with $label }}alt="{{ $label }}"{{ else }}alt=""{{ end }}>
+        {{ with $label }}<figcaption>{{ $label }}</figcaption>{{ end }}
+      </figure>
+    </a>
+  {{ end }}
+</div>
