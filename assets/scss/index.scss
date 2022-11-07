@@ -16,6 +16,7 @@
 }
 
 .main-title-container {
+  display: none;
   position: absolute;
   top: 4rem;
   background-color: #161616cc;
@@ -46,9 +47,29 @@
     backdrop-filter: none;
   }
   @media only screen and (max-width: 600px) {
+    display: block;
     grid-template-columns: 100%;
     top: auto;
     bottom: 2rem;
+  }
+}
+.secondary-title-container {
+  margin: 2rem auto 4rem;
+  max-width: 850px;
+  .main-title {
+    text-align: center;
+    display: block;
+    font-size: calc(1.4rem + 2.1vw);
+    padding: 0 1rem;
+  }
+  .main-subtitle {
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: calc(0.85rem + 1.8vw);
+    margin: 0 0 0 1rem;
+  }
+  @media only screen and (max-width: 600px) {
+    display: none;
   }
 }
 
@@ -108,7 +129,9 @@
 
 .hero {
   position: relative;
-  height: 25rem;
+  min-height: 25rem;
+  max-height: 30rem;
+  height: calc(100vw / 16 * 9);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
