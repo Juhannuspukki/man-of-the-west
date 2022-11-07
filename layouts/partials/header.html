@@ -22,5 +22,21 @@
                 {{ end }}
             </div>
         </div>
+        <div class="secondary-title-container">
+            <h1 class="main-title">{{ .Title }}</h1>
+            {{ if .Params.date }}
+                <p class="main-subtitle">
+                    <strong>
+                        {{ .Date.Format "2006/01/02"}}
+                    </strong>
+                </p>
+            {{ else }}
+                <p class="main-subtitle-small">
+                    <strong>
+                        {{ .Params.subtitle }}
+                    </strong>
+                </p>
+            {{ end }}
+        </div>
     </header>
 {{ end }}
