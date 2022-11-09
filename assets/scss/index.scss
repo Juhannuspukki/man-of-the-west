@@ -54,13 +54,14 @@
   }
 }
 .secondary-title-container {
-  margin: 2rem auto 4rem;
+  margin: 2rem auto;
   max-width: 850px;
   .main-title {
     text-align: center;
     display: block;
     font-size: calc(1.4rem + 2.1vw);
     padding: 0 1rem;
+    margin-bottom: 1rem;
   }
   .main-subtitle {
     text-align: center;
@@ -130,7 +131,7 @@
 .hero {
   position: relative;
   min-height: 25rem;
-  max-height: 30rem;
+  max-height: 35rem;
   height: calc(100vw / 16 * 9);
   background-repeat: no-repeat;
   background-position: center;
