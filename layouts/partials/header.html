@@ -3,9 +3,37 @@
     {{ $resizedHero := $imageResource.Resize "1920x q90 webp"}}
 
     <header>
-        <nav><p class="nav-title">{{ if not .Params.noNavTitle }}<a href="/">Mies Lännestä</a>{{end}}</p></nav>
+        <nav>
+            {{ if .Params.useNavHeadline }}
+                <h1 class="nav-title">
+                    <a href="/" class="nav-title">Mies Lännestä</a>
+                </h1>
+            {{ else }}
+                <a href="/" class="nav-title">Mies Lännestä</a>
+            {{end}}
+        </nav>
         <div class="hero" style='background-image: url("{{ $resizedHero.RelPermalink }}")'>
-            <div class="main-title-container {{ if .Params.noBackground }}transparent{{ end }}">
+            {{ if not .Params.useNavHeadline }}
+                <div class="main-title-container {{ if .Params.noBackground }}transparent{{ end }}">
+                    <h1 class="main-title">{{ .Title }}</h1>
+                    {{ if .Params.date }}
+                        <p class="main-subtitle">
+                            <strong>
+                                {{ .Date.Format "2006/01/02"}}
+                            </strong>
+                        </p>
+                    {{ else }}
+                        <p class="main-subtitle-small">
+                            <strong>
+                                {{ .Params.subtitle }}
+                            </strong>
+                        </p>
+                    {{ end }}
+                </div>
+            {{ end }}
+        </div>
+        {{ if not .Params.useNavHeadline }}
+            <div class="secondary-title-container">
                 <h1 class="main-title">{{ .Title }}</h1>
                 {{ if .Params.date }}
                     <p class="main-subtitle">
@@ -21,22 +49,6 @@
                     </p>
                 {{ end }}
             </div>
-        </div>
-        <div class="secondary-title-container">
-            <h1 class="main-title">{{ .Title }}</h1>
-            {{ if .Params.date }}
-                <p class="main-subtitle">
-                    <strong>
-                        {{ .Date.Format "2006/01/02"}}
-                    </strong>
-                </p>
-            {{ else }}
-                <p class="main-subtitle-small">
-                    <strong>
-                        {{ .Params.subtitle }}
-                    </strong>
-                </p>
-            {{ end }}
-        </div>
+        {{ end }}
     </header>
 {{ end }}
