@@ -14,6 +14,11 @@
   {{ $style := resources.Get "scss/index.scss" | resources.ToCSS }}
   <link rel="stylesheet" href="{{ $style.RelPermalink }}" />
 
+  <link rel="alternate"
+        type="application/rss+xml"
+        href="{{.Site.BaseURL }}/index.xml"
+        title="{{ .Site.Title }}">
+
 </head>
 
 <body>
