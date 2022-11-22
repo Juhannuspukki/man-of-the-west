@@ -6,12 +6,12 @@
       <p>Osa II</p>
       <h2>Pako hyisestä helvetistä</h2>
     </a>
-    <a href="/part-i" class="chapter-link">
+    <a href="/osa-i" class="chapter-link">
       <p>Osa I</p>
       <h2>Vaihto-opiskelupäiväkirjat</h2>
     </a>
   </nav>
-  {{ range (where .Site.RegularPages "Type" "part-ii").Reverse }}
+  {{ range (where .Site.RegularPages "Type" "osa-ii").Reverse }}
     {{ block "card" . }}{{ partial "h-card" . }}{{end}}
   {{ end }}
 </div>
