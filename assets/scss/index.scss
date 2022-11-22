@@ -160,6 +160,9 @@
       color: #E87800;
     }
   }
+  &:last-of-type {
+    margin-bottom: 1rem;
+  }
   @media only screen and (max-width: 600px) {
     grid-template-columns: 100%;
     margin-bottom: 4rem;
