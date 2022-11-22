@@ -13,27 +13,9 @@
             {{end}}
         </nav>
         <div class="hero" style='background-image: url("{{ $resizedHero.RelPermalink }}")'>
-            {{ if not .Params.useNavHeadline }}
-                <div class="main-title-container {{ if .Params.noBackground }}transparent{{ end }}">
-                    <h1 class="main-title">{{ .Title }}</h1>
-                    {{ if .Params.date }}
-                        <p class="main-subtitle">
-                            <strong>
-                                {{ .Date.Format "2006/01/02"}}
-                            </strong>
-                        </p>
-                    {{ else }}
-                        <p class="main-subtitle-small">
-                            <strong>
-                                {{ .Params.subtitle }}
-                            </strong>
-                        </p>
-                    {{ end }}
-                </div>
-            {{ end }}
         </div>
         {{ if not .Params.useNavHeadline }}
-            <div class="secondary-title-container">
+            <div class="title-container">
                 <h1 class="main-title">{{ .Title }}</h1>
                 {{ if .Params.date }}
                     <p class="main-subtitle">
