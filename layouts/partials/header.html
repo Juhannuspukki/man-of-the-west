@@ -1,6 +1,11 @@
 {{ if .Params.banner }}
+
     {{ $imageResource := ($.Site.GetPage "section" "uploads").Resources.GetMatch (strings.TrimPrefix "/uploads/" .Params.banner) }}
-    {{ $resizedHero := $imageResource.Resize "1920x q90 webp"}}
+    {{ $resizedHero2560 := $imageResource.Resize "2560x q90 webp"}}
+    {{ $resizedHero1920 := $imageResource.Resize "1920x q90 webp"}}
+    {{ $resizedHero1280 := $imageResource.Resize "1280x q90 webp"}}
+    {{ $resizedHero768 := $imageResource.Resize "768x q90 webp"}}
+    {{ $resizedHero512 := $imageResource.Resize "512x q90 webp"}}
 
     <header>
         <nav>
@@ -12,8 +17,17 @@
                 <a href="/" class="nav-title">Mies Lännestä</a>
             {{end}}
         </nav>
-        <div class="hero" style='background-image: url("{{ $resizedHero.RelPermalink }}")'>
-        </div>
+        <a href="{{$imageResource.RelPermalink}}">
+            <img class="hero"
+             src="{{ $resizedHero512.RelPermalink }}"
+             srcset="{{ $resizedHero512.RelPermalink }} 512w,
+                     {{ $resizedHero768.RelPermalink }} 768w,
+                     {{ $resizedHero1280.RelPermalink }} 1280w,
+                     {{ $resizedHero1920.RelPermalink }} 1920w,
+                     {{ $resizedHero2560.RelPermalink }} 2560w"
+             aria-hidden="true"
+             alt="">
+        </a>
         {{ if not .Params.useNavHeadline }}
             <div class="title-container">
                 <h1 class="main-title">{{ .Title }}</h1>

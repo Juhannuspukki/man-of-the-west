@@ -92,10 +92,9 @@
   position: relative;
   min-height: 25rem;
   max-height: 35rem;
+  width: 100%;
   height: calc(100vw / 16 * 9);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+  object-fit: cover;
 }
 
 .container {
