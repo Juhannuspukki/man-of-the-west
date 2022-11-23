@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://xn--mieslnnest-u5af.fi/sitemap.xml
