@@ -17,7 +17,7 @@
                 <a href="/" class="nav-title">Mies Lännestä</a>
             {{end}}
         </nav>
-        <a href="{{$imageResource.RelPermalink}}">
+        <a href="{{$imageResource.RelPermalink}}" aria-label="Täysikokoinen kuva">
             <img class="hero"
              src="{{ $resizedHero512.RelPermalink }}"
              srcset="{{ $resizedHero512.RelPermalink }} 512w,
