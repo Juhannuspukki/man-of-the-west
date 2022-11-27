@@ -91,8 +91,11 @@
 .hero {
   position: relative;
   min-height: 25rem;
-  max-height: 35rem;
+  max-height: 40rem;
   width: 100%;
+  max-width: 1512px;
+  display: block;
+  margin: auto;
   height: calc(100vw / 16 * 9);
   object-fit: cover;
 }
