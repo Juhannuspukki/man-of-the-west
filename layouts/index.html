@@ -11,7 +11,7 @@
       <h2>Vaihto-opiskelupäiväkirjat</h2>
     </a>
   </nav>
-  {{ range (where .Site.RegularPages "Type" "osa-ii").Reverse }}
+  {{ range where .Site.RegularPages "Type" "osa-ii" }}
     {{ block "card" . }}{{ partial "h-card" . }}{{end}}
   {{ end }}
 </div>
