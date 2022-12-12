@@ -4,3 +4,4 @@ site/data/webpack.json
 .idea/
 .DS_Store
 site/resources/_gen/images/uploads/
+.vercel
