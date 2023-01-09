@@ -1,6 +1,14 @@
 {{ if .Params.banner }}
 
     {{ $imageResource := ($.Site.GetPage "section" "uploads").Resources.GetMatch (strings.TrimPrefix "/uploads/" .Params.banner) }}
+
+    {{ if .IsHome }}
+        {{ $sectionPages := where .Site.RegularPages "Type" "osa-ii" }}
+        {{ range first 1 $sectionPages }}
+            {{ $imageResource = ($.Site.GetPage "section" "uploads").Resources.GetMatch (strings.TrimPrefix "/uploads/" .Params.banner) }}
+        {{ end }}
+    {{ end }}
+
     {{ $resizedHero2560 := $imageResource.Resize "2560x q90 webp"}}
     {{ $resizedHero1920 := $imageResource.Resize "1920x q90 webp"}}
     {{ $resizedHero1280 := $imageResource.Resize "1280x q90 webp"}}
