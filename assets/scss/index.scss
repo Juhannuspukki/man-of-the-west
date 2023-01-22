@@ -35,7 +35,7 @@
 
 .chapters {
   display: grid;
-  grid-template-columns: max-content 1fr;
+  grid-template-columns: max-content max-content 1fr;
   height: auto;
   margin-bottom: 2rem;
   .chapter-link {
@@ -63,11 +63,14 @@
       }
     }
   }
-  @media only screen and (max-width: 600px) {
-    grid-template-columns: 100%;
-    .chapter-link:first-of-type {
+  @media only screen and (max-width: 750px) {
+    grid-template-columns: max-content max-content;
+    .chapter-link:not(:last-of-type) {
       margin-bottom: 1rem;
     }
+  }
+  @media only screen and (max-width: 520px) {
+    grid-template-columns: 100%;
   }
 }
 
@@ -112,6 +115,16 @@
   p, ul, ol {
     max-width: 650px;
     margin: 0 auto 1.2rem;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    max-width: 650px;
+    margin: 2rem auto 1rem;
+    color: #FFF;
+  }
+  h2 {
+    text-transform: uppercase;
+    font-size: calc(1rem + 1.2vw);
+    line-height: 1.4;
   }
   a {
     text-decoration: underline;
