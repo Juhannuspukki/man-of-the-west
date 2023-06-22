@@ -9,6 +9,10 @@
       <strong>{{ .Date.Format " 2006/01/02"}}</strong>
     </p>
     <h2>{{ .Title }}</h2>
+    <p class="reading-time">
+      {{ $readingTime := math.Ceil (div (.Content | countwords) 200.0) }}
+      <i>Lukuaika {{ $readingTime }} minuutti{{ if not (eq 1 (int $readingTime)) }}a{{ end}}</i>
+    </p>
     <p class="summary">{{ .Summary }}</p>
     <span class="read-more"><strong>Lisää&nbsp;→</strong></span>
   </div>
