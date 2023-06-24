@@ -6,7 +6,7 @@
   {{ end }}
   <div class="h-card-summary-container">
     <p class="time">
-      <strong>{{ .Date.Format " 2006/01/02"}}</strong>
+      <strong>{{ time.Format "Monday 2.1.2006" .Params.date }}</strong>
     </p>
     <h2>{{ .Title }}</h2>
     <p class="reading-time">
