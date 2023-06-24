@@ -15,9 +15,12 @@
       <h2>Kuinka tätä blogia luetaan</h2>
     </a>
   </nav>
-  {{ range .Pages.Reverse }}
+  {{ range (.Paginate ( first 50 .Pages.Reverse )).Pages }}
     {{ block "card" . }}{{ partial "h-card" . }}{{end}}
   {{ end }}
+  <div class="pagination-container">
+    {{ partial "pagination.html" . }}
+  </div>
 </div>
 
 {{ end }}

@@ -15,9 +15,15 @@
       <h2>Kuinka tätä blogia luetaan</h2>
     </a>
   </nav>
-  {{ range where .Site.RegularPages "Type" "osa-ii" }}
+  {{ $paginator := .Paginate (where .Site.RegularPages "Type" "osa-ii") }}
+
+  {{ range $paginator.Pages }}
     {{ block "card" . }}{{ partial "h-card" . }}{{end}}
   {{ end }}
+
+  <div class="pagination-container">
+    {{ partial "pagination.html" . }}
+  </div>
 </div>
 
 {{ end }}
