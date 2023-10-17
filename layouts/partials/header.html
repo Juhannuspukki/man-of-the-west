@@ -25,6 +25,22 @@
                 <a href="/" class="nav-title">Mies Lännestä</a>
             {{end}}
         </nav>
+        {{ if not .Params.useNavHeadline }}
+            <div class="title-container">
+                <h1 class="main-title">{{ .Title }}</h1>
+                {{ if .Params.date }}
+                    <p class="main-subtitle">
+                        {{ time.Format "Monday 2. January" .Params.date}}
+                    </p>
+                {{ else }}
+                    <p class="main-subtitle-small">
+                        <strong>
+                            {{ .Params.subtitle }}
+                        </strong>
+                    </p>
+                {{ end }}
+            </div>
+        {{ end }}
         <a href="{{$imageResource.RelPermalink}}" aria-label="Täysikokoinen kuva">
             <img class="hero"
              src="{{ $resizedHero512.RelPermalink }}"
@@ -36,23 +52,5 @@
              aria-hidden="true"
              alt="">
         </a>
-        {{ if not .Params.useNavHeadline }}
-            <div class="title-container">
-                <h1 class="main-title">{{ .Title }}</h1>
-                {{ if .Params.date }}
-                    <p class="main-subtitle">
-                        <strong>
-                            {{ .Date.Format "2006/01/02"}}
-                        </strong>
-                    </p>
-                {{ else }}
-                    <p class="main-subtitle-small">
-                        <strong>
-                            {{ .Params.subtitle }}
-                        </strong>
-                    </p>
-                {{ end }}
-            </div>
-        {{ end }}
     </header>
 {{ end }}

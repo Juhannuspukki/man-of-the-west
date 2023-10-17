@@ -1,37 +1,6 @@
 @import "fonts";
 @import "tags";
-
-.translate-link {
-  position: absolute;
-  top: 3.25rem;
-  right: 0;
-  svg {
-    fill: #aaa;
-    height: calc(1.5rem + 2.2vw);
-    width: calc(1.5rem + 2.2vw);
-    &:hover {
-      fill: #333333;
-    }
-  }
-}
-
-.title-container {
-  margin: 2rem auto;
-  max-width: 850px;
-  .main-title {
-    text-align: center;
-    display: block;
-    font-size: calc(1.4rem + 2.1vw);
-    padding: 0 1rem;
-    margin-bottom: 1rem;
-  }
-  .main-subtitle {
-    text-align: center;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: calc(0.85rem + 1.8vw);
-    margin: 0 0 0 1rem;
-  }
-}
+@import "single";
 
 .chapters {
   display: grid;
@@ -43,7 +12,7 @@
     opacity: 0.52;
     p {
       color: #FFF;
-      font-family: 'JetBrains Mono', monospace;
+      font-family: 'Avenir Next Condensed', monospace;
       text-transform: uppercase;
       font-size: 2rem;
       margin: 0;
@@ -81,56 +50,13 @@
   left: 50%;
   width: 200px;
   transform: translate(-50%, -50%);
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Avenir Next Condensed', monospace;
   text-transform: uppercase;
   text-align: center;
   margin: 0;
   font-size: 1.5rem;
   &:hover {
     color: #E87800;
-  }
-}
-
-.hero {
-  position: relative;
-  min-height: 25rem;
-  max-height: 40rem;
-  width: 100%;
-  max-width: 1512px;
-  display: block;
-  margin: auto;
-  height: calc(100vw / 16 * 9);
-  object-fit: cover;
-}
-
-.container {
-  max-width: 850px;
-  margin: auto;
-  padding: 0 1rem;
-}
-
-.content {
-  margin: 0 auto 3rem;
-  padding: 0 1rem;
-  p, ul, ol {
-    max-width: 650px;
-    margin: 0 auto 1.2rem;
-  }
-  h1, h2, h3, h4, h5, h6 {
-    max-width: 650px;
-    margin: 2rem auto 1rem;
-    color: #FFF;
-  }
-  h2 {
-    text-transform: uppercase;
-    font-size: calc(1rem + 1.2vw);
-    line-height: 1.4;
-  }
-  a {
-    text-decoration: underline;
-  }
-  .no-underline {
-    text-decoration: none;
   }
 }
 
@@ -148,7 +74,7 @@
   .h-card-summary-container {
     position: relative;
     .time {
-      font-family: 'JetBrains Mono', monospace;
+      font-family: 'Avenir Next Condensed', monospace;
       text-transform: uppercase;
       margin: 0;
       font-size: 0.9rem;
@@ -169,7 +95,7 @@
     }
     .read-more {
       display: inline-block;
-      font-family: 'JetBrains Mono', monospace;
+      font-family: 'Avenir Next Condensed', monospace;
       text-transform: uppercase;
       margin-top: 1rem;
     }
@@ -204,7 +130,7 @@
 .bottom-nav {
   height: 100%;
   h2 {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Avenir Next Condensed', monospace;
     text-transform: uppercase;
   }
   .bottom-grid {
@@ -242,7 +168,7 @@
   }
   p {
     font-size: 2rem;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Avenir Next Condensed', monospace;
     margin: 0;
   }
 }
@@ -262,7 +188,7 @@
     padding: 0;
     .cookie-button-title {
       display: block;
-      font-family: 'JetBrains Mono', monospace;
+      font-family: 'Avenir Next Condensed', monospace;
       text-transform: uppercase;
       font-size: 1rem;
       margin-bottom: 0.5rem;

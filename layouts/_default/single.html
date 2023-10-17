@@ -3,41 +3,7 @@
 <main>
     <div class="content">
         {{ with .Params.song }}
-            <div class="song-container" id="song">
-                <button onclick="show()">
-              <span class="cookie-button-title">
-                  Paina näyttääksesi päivän biisin
-              </span>
-                    <span class="cookie-button-description">
-                  (Toiminto käyttää evästettä valintasi muistamiseen ja avaa Spotify-upotuksen)
-              </span>
-                </button>
-            </div>
-            <div class="disable-cookies" id="cookie-disabler">
-            </div>
-            <script>
-              const root = document.getElementById("song")
-              const root2 = document.getElementById("cookie-disabler")
-              const button = '<button onclick="disableCookies()">Piilota päivän biisi ja poista evästeet</button>'
-
-              document.addEventListener('DOMContentLoaded', () => {
-                const spotifyEnabled = localStorage.getItem('enableSpotify');
-                if (spotifyEnabled) {
-                  root.innerHTML = "{{ . }}"
-                  root2.innerHTML = button
-                }
-              });
-              const show = () => {
-                localStorage.setItem("enableSpotify", "true");
-                root.innerHTML = "{{ . }}"
-                root2.innerHTML = button
-              }
-              const disableCookies = () => {
-                localStorage.clear();
-                root.innerHTML = ""
-                root2.innerHTML = ""
-              }
-            </script>
+            {{ block "song-of-the-day" . }}{{ partial "song-of-the-day" . }}{{end}}
         {{ end }}
         <article>
             {{- .Content -}}

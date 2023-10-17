@@ -1,0 +1,77 @@
+.translate-link {
+  position: absolute;
+  top: 3.25rem;
+  right: 0;
+  svg {
+    fill: #aaa;
+    height: calc(1.5rem + 2.2vw);
+    width: calc(1.5rem + 2.2vw);
+    &:hover {
+      fill: #333333;
+    }
+  }
+}
+
+.title-container {
+  margin: 2rem auto;
+  max-width: 850px;
+  .main-title {
+    text-align: center;
+    display: block;
+    font-size: 2rem;
+    padding: 0 1rem;
+    margin-bottom: 1rem;
+  }
+  .main-subtitle {
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Avenir Next Condensed', monospace;
+    font-size: 1.1rem;
+    margin: 0 0 0 1rem;
+  }
+}
+
+.hero {
+  position: relative;
+  min-height: 20rem;
+  max-height: 40rem;
+  width: calc(100% - 1rem);
+  max-width: 800px;
+  display: block;
+  margin: auto;
+  padding: 0 0.5rem;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+}
+
+.container {
+  max-width: 850px;
+  margin: auto;
+  padding: 0 1rem;
+}
+
+.content {
+  margin: 0 auto 3rem;
+  padding: 0 1rem;
+  p, ul, ol {
+    max-width: 640px;
+    font-size: 1rem;
+    margin: 0 auto 1.2rem;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    max-width: 650px;
+    margin: 2rem auto 1rem;
+    color: #FFF;
+  }
+  h2 {
+    text-transform: uppercase;
+    font-size: calc(1rem + 1.2vw);
+    line-height: 1.4;
+  }
+  a {
+    text-decoration: underline;
+  }
+  .no-underline {
+    text-decoration: none;
+  }
+}
