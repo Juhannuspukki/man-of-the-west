@@ -2,13 +2,6 @@
 
     {{ $imageResource := ($.Site.GetPage "section" "uploads").Resources.GetMatch (strings.TrimPrefix "/uploads/" .Params.banner) }}
 
-    {{ if .IsHome }}
-        {{ $sectionPages := where .Site.RegularPages "Type" "osa-ii" }}
-        {{ range first 1 $sectionPages }}
-            {{ $imageResource = ($.Site.GetPage "section" "uploads").Resources.GetMatch (strings.TrimPrefix "/uploads/" .Params.banner) }}
-        {{ end }}
-    {{ end }}
-
     {{ $resizedHero2560 := $imageResource.Resize "2560x q90 webp"}}
     {{ $resizedHero1920 := $imageResource.Resize "1920x q90 webp"}}
     {{ $resizedHero1280 := $imageResource.Resize "1280x q90 webp"}}
@@ -16,24 +9,18 @@
     {{ $resizedHero512 := $imageResource.Resize "512x q90 webp"}}
 
     <header>
-        <nav>
-            {{ if .Params.useNavHeadline }}
-                <h1 class="nav-title">
-                    <a href="/" class="nav-title">Mies Lännestä</a>
-                </h1>
-            {{ else }}
-                <a href="/" class="nav-title">Mies Lännestä</a>
-            {{end}}
-        </nav>
+        {{ block "top-nav" . }}{{ partial "top-nav" . }}{{end}}
         {{ if not .Params.useNavHeadline }}
             <div class="title-container">
                 <h1 class="main-title">{{ .Title }}</h1>
                 {{ if .Params.date }}
-                    <p class="main-subtitle">
-                        {{ time.Format "Monday 2. January" .Params.date}}
-                    </p>
+                    <a href="https://translate.google.com/translate?hl=&sl=fi&tl=en&u=https://xn--mieslnnest-u5af.fi{{ .RelPermalink }}">
+                        <p class="main-subtitle">
+                            {{ time.Format "Monday 2. January 2006" .Params.date}}
+                        </p>
+                    </a>
                 {{ else }}
-                    <p class="main-subtitle-small">
+                    <p class="main-subtitle">
                         <strong>
                             {{ .Params.subtitle }}
                         </strong>
@@ -41,7 +28,7 @@
                 {{ end }}
             </div>
         {{ end }}
-        <a href="{{$imageResource.RelPermalink}}" aria-label="Täysikokoinen kuva">
+        <a href="{{$resizedHero2560.RelPermalink}}" aria-label="Täysikokoinen kuva">
             <img class="hero"
              src="{{ $resizedHero512.RelPermalink }}"
              srcset="{{ $resizedHero512.RelPermalink }} 512w,

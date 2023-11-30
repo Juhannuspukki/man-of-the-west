@@ -6,10 +6,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <base href="{{ $.Site.BaseURL }}">
   <title>{{ .Title }} - {{ $.Site.Title }}</title>
-  
+
+  <meta property="og:url" content="{{ .Permalink }}" />
+
   <meta property="og:title" content="{{ $.Site.Title }} - {{ .Title }}" />
   <meta name="description" content="Mies lännestä kertoo elämästä Thaimaassa.">
   <meta property="og:description" content="Mies lännestä kertoo elämästä Thaimaassa.">
+
+  {{ $imageResource := ($.Site.GetPage "section" "uploads").Resources.GetMatch (strings.TrimPrefix "/uploads/" .Params.banner) }}
+
+  {{ if .IsHome }}
+    {{ $sectionPages := where .Site.RegularPages "Type" "osa-ii" }}
+    {{ range first 1 $sectionPages }}
+      {{ $imageResource = ($.Site.GetPage "section" "uploads").Resources.GetMatch (strings.TrimPrefix "/uploads/" .Params.banner) }}
+    {{ end }}
+  {{ end }}
+
+  {{ with $imageResource }}
+    {{ $resizedHero768 := $imageResource.Resize "768x q90 webp"}}
+    <meta property="og:image" content="{{ $resizedHero768.RelPermalink }}">
+  {{ end}}
+
 
   <link rel="apple-touch-icon-precomposed" sizes="57x57" href="favicons/apple-touch-icon-57x57.png" />
   <link rel="apple-touch-icon-precomposed" sizes="114x114" href="favicons/apple-touch-icon-114x114.png" />
@@ -37,7 +54,7 @@
 </head>
 
 <body>
-    {{ block "header" . }}{{ partial "header" . }}{{end}}
+    {{ block "header" . }}{{ partial "header-single" . }}{{end}}
   
     {{ block "main" . }}{{end}}
   

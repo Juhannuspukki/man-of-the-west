@@ -5,17 +5,12 @@ body {
   margin: 0;
 }
 
-nav {
-  position: relative;
-  height: 4rem;
-}
-
 header {
-  margin-bottom: 2rem;
+  margin: 4.5rem 0 3rem;
 }
 
 h1 {
-  font-family: 'Avenir Next Condensed', monospace;
+  font-family: $header-font;
   font-weight: 700;
   color: #fff;
   text-transform: uppercase;
@@ -23,7 +18,7 @@ h1 {
 }
 
 h2 {
-  font-family: 'Avenir Next Condensed', monospace;
+  font-family: $header-font;
   font-weight: 700;
   color: #fff;
   font-size: calc(1rem + 1.6vw);
@@ -31,7 +26,7 @@ h2 {
 }
 
 h3 {
-  font-family: 'Avenir Next Condensed', monospace;
+  font-family: $header-font;
   font-weight: 700;
   color: #fff;
 }
@@ -49,8 +44,9 @@ a {
 }
 
 p, ul, ol {
-  font-family: 'Inter', sans-serif;
-  font-weight: 200;
+  font-family: $bread-font;
+  font-variation-settings: "wght" 50;
+  font-weight: 300;
   color: #fff;
 }
 
@@ -63,12 +59,18 @@ figure {
     min-width: 12rem;
     max-height: 18rem;
     margin: auto;
+    &.full-width {
+      margin: 0;
+      width: 100%;
+      max-height: 768px;
+    }
   }
   figcaption {
     margin-top: 1rem;
-    font-weight: 700;
+    font-weight: 300;
+    font-style: italic;
     text-align: center;
-    font-family: 'Inter', sans-serif;
+    font-family: $bread-font;
     color: #fff;
   }
   &:hover {

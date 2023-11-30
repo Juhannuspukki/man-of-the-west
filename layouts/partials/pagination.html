@@ -55,7 +55,7 @@
       </li>
     {{- end }}
 
-    {{- $slots := 5 }}
+    {{- $slots := 4 }}
     {{- $start := math.Max 1 (sub .PageNumber (math.Floor (div $slots 2))) }}
     {{- $end := math.Min .TotalPages (sub (add $start $slots) 1) }}
     {{- if lt (add (sub $end $start) 1) $slots }}
@@ -118,7 +118,7 @@
       </li>
     {{- end }}
 
-    {{- $slots := 3 }}
+    {{- $slots := 4 }}
     {{- $start := math.Max 1 (sub .PageNumber (math.Floor (div $slots 2))) }}
     {{- $end := math.Min .TotalPages (sub (add $start $slots) 1) }}
     {{- if lt (add (sub $end $start) 1) $slots }}

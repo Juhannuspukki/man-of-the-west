@@ -1,24 +1,18 @@
+{{ define "header" }}
+
+  {{ partial "header-list" . }}
+
+{{ end }}
+
 {{ define "main" }}
 
 <div class="container">
-  <nav class="chapters">
-    <a href="/" class="chapter-link active">
-      <p>Osa II</p>
-      <h2>Pako hyisestä helvetistä</h2>
-    </a>
-    <a href="/osa-i" class="chapter-link">
-      <p>Osa I</p>
-      <h2>Vaihto-opiskelupäiväkirjat</h2>
-    </a>
-    <a href="/faq" class="chapter-link">
-      <p>Osa 0</p>
-      <h2>Kuinka tätä blogia luetaan</h2>
-    </a>
-  </nav>
-  {{ $paginator := .Paginate (where .Site.RegularPages "Type" "osa-ii") }}
+  <p class="articles">Uusimmat</p>
+
+  {{ $paginator := .Paginate (where .Site.RegularPages "Type" "osa-iii") }}
 
   {{ range $paginator.Pages }}
-    {{ block "card" . }}{{ partial "h-card" . }}{{end}}
+    {{ block "card" . }}{{ partial "h-card" . }}{{ end }}
   {{ end }}
 
   <div class="pagination-container">

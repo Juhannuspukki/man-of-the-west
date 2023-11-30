@@ -1,0 +1,37 @@
+.contact-form {
+  max-width: 600px;
+  margin: auto;
+  padding: 0.5rem;
+  label {
+    display: block;
+    font-family: $header-font;
+    color: #FFFFFF;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+  }
+  input, textarea {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    border-radius: 0;
+    padding: 0.5rem;
+    margin-top: 1rem;
+    border: 1px solid #FFFFFF;
+  }
+  textarea {
+    height: 6rem;
+  }
+  button {
+    font-family: $header-font;
+    padding: 0.5rem 1rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    color: #FFFFFF;
+    background-color: transparent;
+    transition: background-color 0.1s ease-in-out;
+    border: 1px solid #FFFFFF;
+    &:hover {
+      background-color: #E87800;
+    }
+  }
+}

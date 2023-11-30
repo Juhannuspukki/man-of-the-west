@@ -4,7 +4,7 @@
 <div class="row">
     <a href="{{ $videoResource.RelPermalink }}" class="no-underline">
         <figure>
-            <video autoplay loop muted playsinline src="{{ $videoResource.RelPermalink }}"></video>
+            <video autoplay loop muted playsinline src="{{ $videoResource.RelPermalink }}" class="full-width"></video>
             {{ with .Get "caption" }}<figcaption>{{.}}</figcaption>{{ end }}
         </figure>
     </a>

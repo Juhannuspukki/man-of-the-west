@@ -1,0 +1,151 @@
+.main-nav {
+  background-color: #000000cc;
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  .nav-container {
+    max-width: 800px;
+    margin: auto;
+    svg {
+      height: 2rem;
+      padding: 1rem;
+      &:hover {
+        path {
+          fill: #E87800;
+        }
+      }
+    }
+    .side-menu {
+      display: none;
+      &:checked ~ nav {
+        grid-template-rows: 1fr;
+      }
+      &:checked ~ .hamburger .hamburger-line {
+        background: transparent;
+      }
+      &:checked ~ .hamburger .hamburger-line::before {
+        transform: rotate(-45deg);
+        top: 0;
+      }
+      &:checked ~ .hamburger .hamburger-line::after {
+        transform: rotate(45deg);
+        top: 0;
+      }
+    }
+    .nav {
+      width: 100%;
+      /* weird grid magic to ensure smooth transitions */
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.1s cubic-bezier(0.5, 1, 0.5, 1);
+      .menu {
+        overflow: hidden;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        li {
+          border-bottom: 1px solid #FFFFFF;
+          &:first-of-type {
+            border-top: 1px solid #FFFFFF;
+          }
+        }
+        a, p {
+          padding: 1.15rem 2rem;
+          display: flex;
+          font-family: $header-font;
+          font-weight: 700;
+          font-size: 1.5rem;
+          text-transform: uppercase;
+          &.active {
+            background-color: #FFFFFF;
+            color: #000000;
+          }
+          &:hover {
+            color: #E87800;
+          }
+          .menu-title {
+            flex-grow: 1;
+          }
+          .menu-subtitle {
+            font-size: 1rem;
+            font-weight: 400;
+            align-self: center;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Menu Icon */
+.hamburger {
+  cursor: pointer;
+  float: right;
+  padding: 2rem 1rem;
+  &:hover {
+    .hamburger-line {
+      background-color: #E87800;
+      &::before,
+      &::after{
+        background-color: #E87800;
+      }
+    }
+  }
+  .hamburger-line {
+    background-color: #FFFFFF;
+    display: block;
+    height: 2px;
+    position: relative;
+    width: 1.5rem;
+    &::before,
+    &::after{
+      background-color: #FFFFFF;
+      content: '';
+      display: block;
+      height: 100%;
+      position: absolute;
+      transition: transform .1s ease-out, top .1s ease-out;
+      width: 100%;
+    }
+
+    &::before{
+      top: 0.5rem;
+    }
+    &::after{
+      top: -0.5rem;
+    }
+  }
+}
+
+// just in case a different menu for desktop is needed in the future
+/*
+@media (min-width: 768px) {
+  .main-nav {
+    display: flex;
+    .nav {
+      position: relative;
+      background-color: transparent;
+      grid-template-rows: 1fr;
+    }
+    .menu {
+      overflow: visible;
+      display: flex;
+      flex-direction: row-reverse;
+      li {
+        display: inline-block;
+        a {
+          display: inline-block;
+          &:hover {
+            color: #E87800;
+          }
+        }
+      }
+    }
+    .hamburger {
+      display: none;
+    }
+  }
+}*/

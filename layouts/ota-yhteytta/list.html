@@ -1,0 +1,28 @@
+{{ define "header" }}
+
+    {{ partial "header-list" . }}
+
+{{ end }}
+
+{{ define "main" }}
+
+<main>
+    <form
+            action="https://formspree.io/f/mzblopzp"
+            method="POST"
+            class="contact-form"
+    >
+        <label>
+            Sähköposti:
+            <input type="email" name="email" placeholder="esimerkki@protonmail.com" required>
+        </label>
+        <label>
+            Viesti:
+            <textarea name="message" required></textarea>
+        </label>
+        <!-- your other form fields go here -->
+        <button type="submit">Lähetä</button>
+    </form>
+</main>
+
+{{ end }}

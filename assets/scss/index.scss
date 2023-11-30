@@ -1,62 +1,60 @@
+@import "constants";
 @import "fonts";
 @import "tags";
 @import "single";
+@import "nav";
+@import "form";
 
-.chapters {
-  display: grid;
-  grid-template-columns: max-content max-content 1fr;
-  height: auto;
-  margin-bottom: 2rem;
-  .chapter-link {
-    padding-right: 2rem;
-    opacity: 0.52;
-    p {
-      color: #FFF;
-      font-family: 'Avenir Next Condensed', monospace;
-      text-transform: uppercase;
-      font-size: 2rem;
-      margin: 0;
-    }
-    h2 {
-      text-transform: uppercase;
-      font-size: 0.85rem;
-      margin: 0;
-    }
-    &.active {
-      opacity: 1;
-    }
-    &:hover {
-      opacity: 1;
-      h2, p {
-        color: #E87800;
-      }
-    }
-  }
-  @media only screen and (max-width: 750px) {
-    grid-template-columns: max-content max-content;
-    .chapter-link:not(:last-of-type) {
-      margin-bottom: 1rem;
-    }
-  }
-  @media only screen and (max-width: 520px) {
-    grid-template-columns: 100%;
+.container {
+  max-width: 768px;
+  margin: auto;
+  padding: 0 1rem;
+  .articles {
+    font-family: $header-font;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    margin: 0 0 2rem 0;
   }
 }
 
-.nav-title {
-  display: inline-block;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 200px;
-  transform: translate(-50%, -50%);
-  font-family: 'Avenir Next Condensed', monospace;
-  text-transform: uppercase;
-  text-align: center;
-  margin: 0;
-  font-size: 1.5rem;
-  &:hover {
-    color: #E87800;
+.list-header {
+  position: relative;
+  .header-link {
+    position: relative;
+    min-height: 20rem;
+    max-height: 40rem;
+    width: calc(100% - 2rem);
+    max-width: 768px;
+    display: block;
+    margin: auto;
+    padding: 0 1rem;
+    aspect-ratio: 16/9;
+    .hero {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    .list-header-title-container {
+      position: absolute;
+      top: 2rem;
+      left: 1.5rem;
+      .main-title {
+        text-align: left;
+        display: block;
+        font-size: 2rem;
+        padding: 0 1rem;
+        margin: 0;
+      }
+      .main-subtitle {
+        text-align: left;
+        text-transform: uppercase;
+        font-family: $header-font;
+        font-size: 1.1rem;
+        margin: 1rem;
+      }
+    }
   }
 }
 
@@ -74,7 +72,7 @@
   .h-card-summary-container {
     position: relative;
     .time {
-      font-family: 'Avenir Next Condensed', monospace;
+      font-family: $header-font;
       text-transform: uppercase;
       margin: 0;
       font-size: 0.9rem;
@@ -95,7 +93,7 @@
     }
     .read-more {
       display: inline-block;
-      font-family: 'Avenir Next Condensed', monospace;
+      font-family: $header-font;
       text-transform: uppercase;
       margin-top: 1rem;
     }
@@ -130,7 +128,7 @@
 .bottom-nav {
   height: 100%;
   h2 {
-    font-family: 'Avenir Next Condensed', monospace;
+    font-family: $header-font;
     text-transform: uppercase;
   }
   .bottom-grid {
@@ -168,7 +166,7 @@
   }
   p {
     font-size: 2rem;
-    font-family: 'Avenir Next Condensed', monospace;
+    font-family: $header-font;
     margin: 0;
   }
 }
@@ -188,13 +186,13 @@
     padding: 0;
     .cookie-button-title {
       display: block;
-      font-family: 'Avenir Next Condensed', monospace;
+      font-family: $header-font;
       text-transform: uppercase;
       font-size: 1rem;
       margin-bottom: 0.5rem;
     }
     .cookie-button-description {
-      font-family: 'Inter', sans-serif;
+      font-family: $bread-font;
       font-size: 0.85rem;
     }
     &:hover {
@@ -211,7 +209,7 @@
     cursor: pointer;
     border-radius: 12px;
     background-color: transparent;
-    font-family: 'Inter', sans-serif;
+    font-family: $bread-font;
     font-size: 0.85rem;
     color: #FFFFFF;
     border: 1px #fff solid;

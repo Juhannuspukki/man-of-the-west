@@ -1,0 +1,17 @@
+{{ define "header" }}
+
+    {{ partial "header-list" . }}
+
+{{ end }}
+
+{{ define "main" }}
+
+<main>
+    <div class="content">
+        <article>
+            {{- .Content -}}
+        </article>
+    </div>
+</main>
+
+{{ end }}

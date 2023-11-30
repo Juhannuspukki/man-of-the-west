@@ -1,15 +1,14 @@
-.translate-link {
-  position: absolute;
-  top: 3.25rem;
-  right: 0;
-  svg {
-    fill: #aaa;
-    height: calc(1.5rem + 2.2vw);
-    width: calc(1.5rem + 2.2vw);
-    &:hover {
-      fill: #333333;
-    }
-  }
+.hero {
+  position: relative;
+  min-height: 20rem;
+  max-height: 40rem;
+  width: calc(100% - 2rem);
+  max-width: 768px;
+  display: block;
+  margin: auto;
+  padding: 0 1rem;
+  aspect-ratio: 16/9;
+  object-fit: cover;
 }
 
 .title-container {
@@ -25,29 +24,11 @@
   .main-subtitle {
     text-align: center;
     text-transform: uppercase;
-    font-family: 'Avenir Next Condensed', monospace;
+    font-family: $header-font;
     font-size: 1.1rem;
     margin: 0 0 0 1rem;
+    font-weight: 400;
   }
-}
-
-.hero {
-  position: relative;
-  min-height: 20rem;
-  max-height: 40rem;
-  width: calc(100% - 1rem);
-  max-width: 800px;
-  display: block;
-  margin: auto;
-  padding: 0 0.5rem;
-  aspect-ratio: 16/9;
-  object-fit: cover;
-}
-
-.container {
-  max-width: 850px;
-  margin: auto;
-  padding: 0 1rem;
 }
 
 .content {
