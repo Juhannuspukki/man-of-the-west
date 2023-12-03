@@ -1,0 +1,27 @@
+<a class="h-card no-underline index-card" href="{{ .RelPermalink }}">
+  {{ if .Params.banner }}
+  {{ $imageResource := ($.Site.GetPage "section" "uploads").Resources.GetMatch (strings.TrimPrefix "/uploads/" .Params.banner) }}
+  {{ $resizedBanner := $imageResource.Fill "530x320 Center q90 webp" }}
+  {{ $resizedBanner2x := $imageResource.Fill "1060x640 Center q90 webp" }}
+  <img
+    srcset="{{ $resizedBanner.RelPermalink }} 1x,
+            {{ $resizedBanner2x.RelPermalink }} 2x"
+    class="h-card-banner"
+    src="{{ $resizedBanner.RelPermalink }}"
+    alt="Thumbnail image"
+  />
+  {{ end }}
+  <div class="h-card-summary-container">
+    <p class="time">
+      <strong>{{ time.Format "Mon 2.1.2006" .Params.date }}</strong>
+    </p>
+    <h2>{{ .Title }}</h2>
+    <p class="reading-time">
+      {{ $readingTime := math.Ceil (div (.Content | countwords) 200.0) }}
+      <i>Lukuaika {{ $readingTime }} minuutti{{ if not (eq 1 (int $readingTime)) }}a{{ end}}</i>
+    </p>
+    <p class="summary">{{ .Summary }}</p>
+    <span class="read-more"><strong>Lisää&nbsp;→</strong></span>
+  </div>
+</a>
+

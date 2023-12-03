@@ -1,18 +1,25 @@
 {{ define "header" }}
 
-  {{ partial "header-list" . }}
+  {{ partial "header-index" . }}
 
 {{ end }}
 
 {{ define "main" }}
 
-<div class="container">
-  <p class="articles">Uusimmat</p>
+<div class="container index">
+  <p class="articles">Uusin</p>
 
   {{ $paginator := .Paginate (where .Site.RegularPages "Type" "osa-iii") }}
 
-  {{ range $paginator.Pages }}
-    {{ block "card" . }}{{ partial "h-card" . }}{{ end }}
+  {{ range $index, $page := $paginator.Pages }}
+    {{ if eq $index 0 }}
+      <!-- This is the first element, apply special appearance -->
+      {{ block "index-card" . }}{{ partial "index-card" . }}{{ end }}
+      <p class="articles">Vanhemmat</p>
+    {{ else }}
+      <!-- This is not the first element, apply regular appearance -->
+      {{ block "card" . }}{{ partial "h-card" . }}{{ end }}
+    {{ end }}
   {{ end }}
 
   <div class="pagination-container">
