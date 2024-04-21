@@ -40,13 +40,13 @@ hr {
 a {
   text-decoration: none;
   color: #fff;
-  font-weight: 300;
+  font-weight: $bread-weight;
 }
 
 p, ul, ol {
   font-family: $bread-font;
   font-variation-settings: "wght" 50;
-  font-weight: 300;
+  font-weight: $bread-weight;
   color: #fff;
 }
 
@@ -67,7 +67,7 @@ figure {
   }
   figcaption {
     margin-top: 1rem;
-    font-weight: 300;
+    font-weight: $bread-weight;
     font-style: italic;
     text-align: center;
     font-family: $bread-font;

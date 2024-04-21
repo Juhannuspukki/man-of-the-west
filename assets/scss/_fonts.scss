@@ -1,28 +1,42 @@
-/* inter-100 - latin_latin-ext */
+/* noto-sans-thai-looped-100 - latin_latin-ext_thai */
 @font-face {
   font-display: fallback; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: 'Inter';
+  font-family: 'Noto Sans Thai Looped';
   font-style: normal;
   font-weight: 100;
-  src: url('../fonts/inter-v13-latin_latin-ext-100.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url('../fonts/noto-sans-thai-looped-v14-latin_latin-ext_thai-100.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
-
-/* inter-200 - latin_latin-ext */
+/* noto-sans-thai-looped-200 - latin_latin-ext_thai */
 @font-face {
   font-display: fallback; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: 'Inter';
+  font-family: 'Noto Sans Thai Looped';
   font-style: normal;
   font-weight: 200;
-  src: url('../fonts/inter-v13-latin_latin-ext-200.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url('../fonts/noto-sans-thai-looped-v14-latin_latin-ext_thai-200.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
-
-/* inter-700 - latin_latin-ext */
+/* noto-sans-thai-looped-300 - latin_latin-ext_thai */
 @font-face {
   font-display: fallback; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: 'Inter';
+  font-family: 'Noto Sans Thai Looped';
+  font-style: normal;
+  font-weight: 300;
+  src: url('../fonts/noto-sans-thai-looped-v14-latin_latin-ext_thai-300.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* noto-sans-thai-looped-regular - latin_latin-ext_thai */
+@font-face {
+  font-display: fallback; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Noto Sans Thai Looped';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/noto-sans-thai-looped-v14-latin_latin-ext_thai-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* noto-sans-thai-looped-700 - latin_latin-ext_thai */
+@font-face {
+  font-display: fallback; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Noto Sans Thai Looped';
   font-style: normal;
   font-weight: 700;
-  src: url('../fonts/inter-v13-latin_latin-ext-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url('../fonts/noto-sans-thai-looped-v14-latin_latin-ext_thai-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 
 /* roboto-condensed-700 - latin_latin-ext_vietnamese */
