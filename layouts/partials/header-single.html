@@ -41,6 +41,5 @@
     </header>
   {{ else }}
     {{ errorf "Image resource not found: %s (Called from: %s)" $bannerSrc .Page.Path }}
-    <div class="error-message">Banner image not found: {{ $bannerSrc }}</div>
   {{ end }}
 {{ end }}
