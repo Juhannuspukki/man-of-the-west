@@ -9,7 +9,7 @@
 <div class="container index">
   <p class="articles">Uusin</p>
 
-  {{ $paginator := .Paginate (where .Site.RegularPages "Type" "osa-iii") }}
+  {{ $paginator := .Paginate (where .Site.RegularPages "Type" "osa-iv") }}
 
   {{ range $index, $page := $paginator.Pages }}
     {{ if eq $index 0 }}
