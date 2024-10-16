@@ -1,6 +1,6 @@
 # Man of the West
 
-A blog site utilizing Hugo where content is by default stored in a git submodule.
+A blog site utilizing Hugo where content is by default stored in a git submodule. Generator: Hugo 0.136.0+extended
 
 To add a submodule:
 
