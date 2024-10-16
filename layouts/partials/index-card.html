@@ -20,7 +20,7 @@
       {{ $readingTime := math.Ceil (div (.Content | countwords) 200.0) }}
       <i>Lukuaika {{ $readingTime }} minuutti{{ if not (eq 1 (int $readingTime)) }}a{{ end}}</i>
     </p>
-    <p class="summary">{{ .Summary }}</p>
+    <p class="summary">{{ .Content | plainify | strings.Truncate 200 }}</p>
     <span class="read-more"><strong>Lisää&nbsp;→</strong></span>
   </div>
 </a>

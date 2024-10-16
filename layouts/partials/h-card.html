@@ -1,8 +1,8 @@
 <a class="h-card no-underline" href="{{ .RelPermalink }}">
   {{ if .Params.banner }}
-  {{ $imageResource := ($.Site.GetPage "section" "uploads").Resources.GetMatch (strings.TrimPrefix "/uploads/" .Params.banner) }}
-  {{ $resizedBanner := $imageResource.Fill "420x220 Center q90 webp" }}
-  <img class="h-card-banner" src="{{ $resizedBanner.RelPermalink }}" alt="Thumbnail image"/>
+    {{ $imageResource := ($.Site.GetPage "section" "uploads").Resources.GetMatch (strings.TrimPrefix "/uploads/" .Params.banner) }}
+    {{ $resizedBanner := $imageResource.Fill "420x220 Center q90 webp" }}
+    <img class="h-card-banner" src="{{ $resizedBanner.RelPermalink }}" alt="Thumbnail image"/>
   {{ end }}
   <div class="h-card-summary-container">
     <p class="time">
@@ -13,7 +13,7 @@
       {{ $readingTime := math.Ceil (div (.Content | countwords) 200.0) }}
       <i>Lukuaika {{ $readingTime }} minuutti{{ if not (eq 1 (int $readingTime)) }}a{{ end}}</i>
     </p>
-    <p class="summary">{{ .Summary }}</p>
+    <p class="summary">{{ .Content | plainify | strings.Truncate 200 }}</p>
     <span class="read-more"><strong>Lisää&nbsp;→</strong></span>
   </div>
 </a>
