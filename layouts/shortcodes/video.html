@@ -1,11 +1,14 @@
-
-{{ $videoResource := ($.Site.GetPage "section" "uploads").Resources.GetMatch (strings.TrimPrefix "/uploads/" (.Get "src")) }}
-
+{{ $videoSrc := .Get "src" }}
+{{ $videoResource := ($.Site.GetPage "section" "uploads").Resources.GetMatch (strings.TrimPrefix "/uploads/" $videoSrc) }}
 <div class="row">
-    <a href="{{ $videoResource.RelPermalink }}" class="no-underline">
-        <figure>
-            <video autoplay loop muted playsinline src="{{ $videoResource.RelPermalink }}" class="full-width"></video>
-            {{ with .Get "caption" }}<figcaption>{{.}}</figcaption>{{ end }}
-        </figure>
-    </a>
+{{ if $videoResource }}
+  <a href="{{ $videoResource.RelPermalink }}" class="no-underline">
+    <figure>
+      <video autoplay loop muted playsinline src="{{ $videoResource.RelPermalink }}" class="full-width"></video>
+      {{ with .Get "caption" }}<figcaption>{{.}}</figcaption>{{ end }}
+    </figure>
+  </a>
+{{ else }}
+  {{ errorf "Video resource not found: %s (Called from: %s)" $videoSrc $.Position }}
+{{ end }}
 </div>
