@@ -1,7 +1,21 @@
 {{ define "main" }}
 
-<h1>Nothing Here...</h1>
-<h2 style="font-size: 120px; margin:0;">💩</h2>
-<h3><a href="{{ "/" | relURL }}">Go Home</a></h3>
+<style>
+    section {
+        min-height: 100vh;
+        margin: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+</style>
+<section>
+    <div>
+        <h1>404 - Sivua ei löydy</h1>
+        <p>Mies Lännestä on käynyt monessa paikassa, mutta ei täällä.</p>
+        <p><a href="{{ "/" | relURL }}">Etusivulle →</a></p>
+    </div>
+</section>
 
 {{ end }}
