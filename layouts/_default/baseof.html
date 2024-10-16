@@ -44,8 +44,7 @@
   <link rel="icon" type="image/png" href="favicons/favicon-16x16.png" sizes="16x16" />
   <link rel="icon" type="image/png" href="favicons/favicon-128.png" sizes="128x128" />
 
-
-  {{ $style := resources.Get "scss/index.scss" | resources.ToCSS }}
+  {{ $style := resources.Get "scss/index.scss" | css.Sass }}
   <link rel="stylesheet" href="{{ $style.RelPermalink }}" />
 
   <link rel="alternate"
