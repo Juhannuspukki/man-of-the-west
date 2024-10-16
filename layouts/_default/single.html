@@ -5,6 +5,13 @@
         {{ with .Params.song }}
             {{ block "song-of-the-day" . }}{{ partial "song-of-the-day" . }}{{end}}
         {{ end }}
+        {{ if .Params.weather }}
+            {{ $weatherData := .Params.weather }}
+            {{ $weatherWithContext := dict "weather" $weatherData "date" .Date "filePath" .File.Path }}
+            {{ block "weather" $weatherWithContext }}
+                {{ partial "weather" . }}
+            {{end}} 
+        {{ end }}
         <article>
             {{- .Content -}}
         </article>

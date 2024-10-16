@@ -1,0 +1,80 @@
+{{ $scratch := newScratch }}
+
+{{ $scratch.Add "getAQIColor" (dict "aqiValue" 0 "color" "") }}
+{{ with $scratch.Get "getAQIColor" }}
+  {{ $aqiValue := float .aqiValue }}
+  {{ $hue := 120.0 }} {{/* Start with green (120 degrees in HSL) */}}
+  {{ if gt $aqiValue 0 }}
+    {{ $hue = sub 120 (div (mul $aqiValue 180) 300) }} {{/* Interpolate to purple (300 degrees in HSL) */}}
+  {{ end }}
+  {{ $hue = math.Max 0 (math.Min $hue 120) }} {{/* Ensure hue is between 0 and 120 */}}
+  {{ $finalHue := sub 300 $hue }}
+  {{ $color := printf "hsl(%.0f, 100%%, 40%%)" $finalHue }}
+  {{ $scratch.Set "getAQIColor" (dict "aqiValue" $aqiValue "color" $color) }}
+{{ end }}
+
+<section class="weather">
+    {{ range .weather }}
+        <div class="weather-item">
+            <h2>{{ .city }}</h3>
+            <div class="weather-data">
+                {{ $iconPath := printf "icons/%s" .symbol }}
+                {{ $partialPath := printf "partials/%s.html" $iconPath }}
+                {{ if templates.Exists $partialPath }}
+                    {{ partial $iconPath . }}
+                {{ else }}
+                    {{ errorf "Partial '%s' not found. File path: %s" $iconPath $.filePath }}
+                {{ end }}
+                <div>
+                    {{ partial "icons/temperature-max" . }} <span>{{ .tempMax }}°C</span>
+                </div>
+                <div>
+                    {{ partial "icons/wind" . }} <span>{{ .wind }} m/s</span>
+                </div>
+                <div>
+                    {{ partial "icons/temperature-min" . }} <span>{{ .tempMin }}°C</span>
+                </div>
+                <div>
+                    {{ $maxAQI := 350 }}
+
+                    {{ $aqi := float .aqi }}
+                    {{ $r := 0.0 }}
+                    {{ $g := 0.0 }}
+                    {{ $b := 0.0 }}
+                    
+                    {{ if le $aqi 50 }}
+                      {{ $r = div (mul $aqi 255) 50 }}
+                      {{ $g = 255 }}
+                      {{ else if le $aqi 100 }}
+                      {{ $r = 255 }}
+                      {{ $g = sub 255 (div (mul (sub $aqi 50) 155) 50) }}
+                      {{ $b = 0 }}
+                    {{ else if le $aqi 150 }}
+                      {{ $r = 255 }}
+                      {{ $g = sub 100 (div (mul (sub $aqi 100) 100) 50) }}
+                      {{ $b = 0 }}
+                    {{ else if le $aqi 200 }}
+                      {{ $r = 255 }}
+                      {{ $g = 0 }}
+                      {{ $b = div (mul (sub $aqi 150) 255) 50 }}
+                    {{ else if le $aqi $maxAQI }}
+                      {{ $range := sub $maxAQI 200 }}
+                      {{ $progress := div (sub $aqi 200) $range }}
+                      {{ $r = add 165 (mul (sub 255 165) (sub 1 $progress)) }}
+                      {{ $g = mul 65 $progress }}
+                      {{ $b = mul 128 (sub 1 $progress) }}
+                    {{ else }}
+                      {{ $r = 165 }}
+                      {{ $g = 65 }}
+                      {{ $b = 0 }}
+                    {{ end }}
+                    
+                    {{ $aqiColor := printf "rgb(%d, %d, %d)" (int (math.Round $r)) (int (math.Round $g)) (int (math.Round $b)) }}
+                    
+                    {{ partial "icons/lungs" . }}
+                    <span style="color: {{ $aqiColor | safeCSS }}">AQI {{ .aqi }}</span>
+                </div>
+            </div>
+        </div>
+    {{ end }}
+</section>

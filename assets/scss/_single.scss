@@ -55,3 +55,52 @@
     text-decoration: none;
   }
 }
+
+.weather {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3rem;
+  .weather-item {
+    text-align: center;
+    .weather-data {
+      display: grid;
+      grid-template-columns: auto auto auto;
+      grid-template-rows: 1fr 1fr;
+      column-gap: 1.75rem;
+      row-gap: 0.5rem;
+      > svg {
+        fill: #FFFFFF;
+        height: 75%;
+        width: auto;
+        max-width: 100%;
+        grid-row: span 2;
+        justify-self: center;
+        align-self: center;
+      }
+      div {          
+        display: flex;
+        height: 1.75rem;
+        svg {
+          fill: #FFFFFF;
+          height: 100%;
+          width: auto;
+          max-width: 100%;
+          margin-right: 0.5rem;
+        }
+        span {
+          margin: 0 0 -2px;
+          align-self: center;
+          color: #FFFFFF;
+          font-size: 1.25rem;
+          font-family: $header-font;
+          font-weight: 700;
+        }
+      }
+      }
+      h2 {
+        font-size: 1.25rem;
+        margin: 0 0 1rem;
+        font-weight: 700;
+      }
+  }
+}
