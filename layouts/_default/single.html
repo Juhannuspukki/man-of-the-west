@@ -7,7 +7,7 @@
         {{ end }}
         {{ if .Params.weather }}
             {{ $weatherData := .Params.weather }}
-            {{ $weatherWithContext := dict "weather" $weatherData "date" .Date "filePath" .File.Path }}
+            {{ $weatherWithContext := dict "weather" $weatherData "filePath" .File.Path }}
             {{ block "weather" $weatherWithContext }}
                 {{ partial "weather" . }}
             {{end}} 
