@@ -5,4 +5,5 @@ site/data/webpack.json
 .DS_Store
 resources/_gen/
 .vercel
+.wrangler
 public/
