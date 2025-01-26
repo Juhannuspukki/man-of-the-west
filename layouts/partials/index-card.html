@@ -1,15 +1,16 @@
 <a class="h-card no-underline index-card" href="{{ .RelPermalink }}">
   {{ if .Params.banner }}
-  {{ $imageResource := ($.Site.GetPage "section" "uploads").Resources.GetMatch (strings.TrimPrefix "/uploads/" .Params.banner) }}
-  {{ $resizedBanner := $imageResource.Fill "530x320 Center q90 webp" }}
-  {{ $resizedBanner2x := $imageResource.Fill "1060x640 Center q90 webp" }}
-  <img
-    srcset="{{ $resizedBanner.RelPermalink }} 1x,
-            {{ $resizedBanner2x.RelPermalink }} 2x"
-    class="h-card-banner"
-    src="{{ $resizedBanner.RelPermalink }}"
-    alt="Thumbnail image"
-  />
+    {{ $bannerSrc := .Params.banner }}
+    {{ $imageResource := resources.Get (printf "images/%s" $bannerSrc) }}  
+    {{ $resizedBanner := $imageResource.Fill "530x320 Center q90 webp" }}
+    {{ $resizedBanner2x := $imageResource.Fill "1060x640 Center q90 webp" }}
+    <img
+      srcset="{{ $resizedBanner.RelPermalink }} 1x,
+              {{ $resizedBanner2x.RelPermalink }} 2x"
+      class="h-card-banner"
+      src="{{ $resizedBanner.RelPermalink }}"
+      alt="Thumbnail image"
+    />
   {{ end }}
   <div class="h-card-summary-container">
     <p class="time">

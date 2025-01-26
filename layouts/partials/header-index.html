@@ -1,6 +1,6 @@
 {{ if .Params.banner }}
   {{ $bannerSrc := .Params.banner }}
-  {{ $imageResource := ($.Site.GetPage "section" "uploads").Resources.GetMatch (strings.TrimPrefix "/uploads/" $bannerSrc) }}
+  {{ $imageResource := resources.Get (printf "images/%s" $bannerSrc) }}
   {{ if $imageResource }}
     {{ $resizedHero2560 := $imageResource.Resize "2560x q90 webp"}}
     {{ $resizedHero1920 := $imageResource.Resize "1920x q90 webp"}}
@@ -19,6 +19,6 @@
         </div>
     </header>
   {{ else }}
-    {{ errorf "Image resource not found: %s (Called from: %s)" $bannerSrc .Page.Path }}
+    {{ errorf "Image resource not found: %s (Called from: %s)" .Params.banner .Page.Path }}
   {{ end }}
 {{ end }}

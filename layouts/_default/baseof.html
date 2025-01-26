@@ -13,12 +13,12 @@
   <meta name="description" content="Mies lännestä kertoo elämästä Thaimaassa.">
   <meta property="og:description" content="Mies lännestä kertoo elämästä Thaimaassa.">
 
-  {{ $imageResource := ($.Site.GetPage "section" "uploads").Resources.GetMatch (strings.TrimPrefix "/uploads/" .Params.banner) }}
+  {{ $imageResource := resources.Get (printf "images/%s" .Params.banner) }}
 
   {{ if .IsHome }}
-    {{ $sectionPages := where .Site.RegularPages "Type" "osa-ii" }}
+    {{ $sectionPages := where .Site.RegularPages "Type" "osa-iv" }}
     {{ range first 1 $sectionPages }}
-      {{ $imageResource = ($.Site.GetPage "section" "uploads").Resources.GetMatch (strings.TrimPrefix "/uploads/" .Params.banner) }}
+      {{ $imageResource := resources.Get (printf "images/%s" .Params.banner) }}
     {{ end }}
   {{ end }}
 

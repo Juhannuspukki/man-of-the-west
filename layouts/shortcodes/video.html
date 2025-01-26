@@ -1,5 +1,5 @@
 {{ $videoSrc := .Get "src" }}
-{{ $videoResource := ($.Site.GetPage "section" "uploads").Resources.GetMatch (strings.TrimPrefix "/uploads/" $videoSrc) }}
+{{ $videoResource := resources.Get (printf "images/%s" $videoSrc) }}
 <div class="row">
 {{ if $videoResource }}
   <a href="{{ $videoResource.RelPermalink }}" class="no-underline">

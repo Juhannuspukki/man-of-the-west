@@ -1,6 +1,6 @@
 <a class="h-card no-underline" href="{{ .RelPermalink }}">
   {{ if .Params.banner }}
-    {{ $imageResource := ($.Site.GetPage "section" "uploads").Resources.GetMatch (strings.TrimPrefix "/uploads/" .Params.banner) }}
+    {{ $imageResource := resources.Get (printf "images/%s" .Params.banner) }}
     {{ $resizedBanner := $imageResource.Fill "420x220 Center q90 webp" }}
     <img class="h-card-banner" src="{{ $resizedBanner.RelPermalink }}" alt="Thumbnail image"/>
   {{ end }}
