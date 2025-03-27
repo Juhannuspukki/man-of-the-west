@@ -11,20 +11,24 @@
         {{ block "top-nav" . }}{{ partial "top-nav" . }}{{end}}
         {{ if not .Params.useNavHeadline }}
             <div class="title-container">
-            <h1 class="main-title">{{ .Title }}</h1>
-            {{ if .Params.date }}
-                <a href="https://translate.google.com/translate?hl=&sl=fi&tl=en&u=https://xn--mieslnnest-u5af.fi{{ .RelPermalink }}">
-                    <p class="main-subtitle">
-                        {{ time.Format "Monday 2. January 2006" .Params.date}}
-                    </p>
-                </a>
-            {{ else }}
-                <p class="main-subtitle">
-                    <strong>
-                        {{ .Params.subtitle }}
-                    </strong>
+                <p class="episode-number">
+                    {{ $episodeNumber := partial "ep-number" . }}
+                    {{ $episodeNumber }}:
                 </p>
-            {{ end }}
+                <h1 class="main-title">{{ .Title }}</h1>
+                {{ if .Params.date }}
+                    <a href="https://translate.google.com/translate?hl=&sl=fi&tl=en&u=https://xn--mieslnnest-u5af.fi{{ .RelPermalink }}">
+                        <p class="main-subtitle">
+                            {{ time.Format "Monday 2. January 2006" .Params.date}}
+                        </p>
+                    </a>
+                {{ else }}
+                    <p class="main-subtitle">
+                        <strong>
+                            {{ .Params.subtitle }}
+                        </strong>
+                    </p>
+                {{ end }}
             </div>
         {{ end }}
         <a href="{{$resizedHero2560.RelPermalink}}" aria-label="Täysikokoinen kuva">

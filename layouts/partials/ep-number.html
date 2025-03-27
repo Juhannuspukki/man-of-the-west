@@ -1,0 +1,31 @@
+{{ $currentPage := . }}
+{{ $episodeNumber := 0 }}
+
+{{ $allEpisodes := slice }}
+
+{{ range where .Site.RegularPages "Section" "osa-i" }}
+  {{ $allEpisodes = $allEpisodes | append . }}
+{{ end }}
+
+{{ range where .Site.RegularPages "Section" "osa-ii" }}
+  {{ $allEpisodes = $allEpisodes | append . }}
+{{ end }}
+
+{{ range where .Site.RegularPages "Section" "osa-iii" }}
+  {{ $allEpisodes = $allEpisodes | append . }}
+{{ end }}
+
+{{ range where .Site.RegularPages "Section" "osa-iv" }}
+  {{ $allEpisodes = $allEpisodes | append . }}
+{{ end }}
+
+{{ $sortedEpisodes := sort $allEpisodes "Date" "asc" }}
+
+{{ range $index, $page := $sortedEpisodes }}
+  {{ if eq $page.Permalink $currentPage.Permalink }}
+    {{ $episodeNumber = add $index 1 }}
+    {{ break }}
+  {{ end }}
+{{ end }}
+
+{{ return $episodeNumber }}
