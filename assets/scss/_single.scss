@@ -19,7 +19,14 @@
     display: block;
     font-size: 2rem;
     padding: 0 1rem;
-    margin-bottom: 1rem;
+    margin: 0 0 1rem 0;
+  }
+  .episode-number {
+    text-align: center;
+    text-transform: uppercase;
+    font-family: $header-font;
+    font-size: 1.1rem;
+    font-weight: 400;
   }
   .main-subtitle {
     text-align: center;
