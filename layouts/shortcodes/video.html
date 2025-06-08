@@ -4,12 +4,19 @@
   {{ $url := printf "%s/%s" site.Params.staticurl $videoSrc }}
 
   {{ if eq hugo.Environment "development" }}
-    <a href="/images/{{ $videoSrc }}" class="no-underline">
+    {{ $video := resources.Get (printf "images/%s" $videoSrc) }}
+
+    {{ if $video }}
+    <a href="{{ $video.RelPermalink }}" class="no-underline">
       <figure>
-        <video autoplay loop muted playsinline src="/images/{{ $videoSrc }}" class="full-width"></video>
+        <video autoplay loop muted playsinline src="{{ $video.RelPermalink }}" class="full-width"></video>
         {{ with .Get "caption" }}<figcaption>{{.}}</figcaption>{{ end }}
       </figure>
     </a>
+    {{ else }}
+      {{ warnf "Video %s not found" $videoSrc }}
+    {{ end }}
+
   {{ else }}
     <a href="{{ $url }}" class="no-underline">
       <figure>

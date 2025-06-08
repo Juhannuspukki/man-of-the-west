@@ -7,5 +7,5 @@ resources/_gen/
 .vercel
 .wrangler
 public/
-static/images/
-static/optimized_images/
+assets/images/
+assets/optimized_images/
