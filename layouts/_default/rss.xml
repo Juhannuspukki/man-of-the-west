@@ -32,12 +32,10 @@
       <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
       {{ with .Site.Author.email }}<author>{{.}}{{ with $.Site.Author.name }} ({{.}}){{end}}</author>{{end}}
       {{ if .Params.banner }}
-
-        {{ $path := printf "images/%s" .Params.banner }}
-        {{ $imageResource := resources.Get $path }}
-
-        {{ $resizedBanner := $imageResource.Fill "420x220 Center q90 webp" }}
-      <media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="{{ $resizedBanner.Permalink }}"/>
+        {{ $dirname := path.Dir .Params.banner }}
+        {{ $basename := replaceRE "\\.[^.]+$" "" (path.Base .Params.banner) }}
+        {{ $url := printf "%s/%s/%s" .Site.Params.staticurl $dirname $basename }}
+        <media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="{{ $url }}-512w.webp"/>
       {{ end }}
       <guid>{{ .Permalink }}</guid>
       <description>{{ .Summary | html }}</description>

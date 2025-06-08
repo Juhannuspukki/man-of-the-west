@@ -1,14 +1,21 @@
 {{ $videoSrc := .Get "src" }}
-{{ $videoResource := resources.Get (printf "images/%s" $videoSrc) }}
+
 <div class="row">
-{{ if $videoResource }}
-  <a href="{{ $videoResource.RelPermalink }}" class="no-underline">
-    <figure>
-      <video autoplay loop muted playsinline src="{{ $videoResource.RelPermalink }}" class="full-width"></video>
-      {{ with .Get "caption" }}<figcaption>{{.}}</figcaption>{{ end }}
-    </figure>
-  </a>
-{{ else }}
-  {{ errorf "Video resource not found: %s (Called from: %s)" $videoSrc $.Position }}
-{{ end }}
+  {{ $url := printf "%s/%s" site.Params.staticurl $videoSrc }}
+
+  {{ if eq hugo.Environment "development" }}
+    <a href="/images/{{ $videoSrc }}" class="no-underline">
+      <figure>
+        <video autoplay loop muted playsinline src="/images/{{ $videoSrc }}" class="full-width"></video>
+        {{ with .Get "caption" }}<figcaption>{{.}}</figcaption>{{ end }}
+      </figure>
+    </a>
+  {{ else }}
+    <a href="{{ $url }}" class="no-underline">
+      <figure>
+        <video autoplay loop muted playsinline src="{{ $url }}" class="full-width"></video>
+        {{ with .Get "caption" }}<figcaption>{{.}}</figcaption>{{ end }}
+      </figure>
+    </a>
+  {{ end }}
 </div>
