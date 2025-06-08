@@ -1,0 +1,41 @@
+{{/* 
+  Usage example:
+  {{ partial "image.html" (dict "class" "rounded-lg shadow-md" "src" "my-image.jpg" "alt" "My image description") }}
+*/}}
+
+{{ $class := .class | default "" }}
+{{ $src := .src }}
+{{ $alt := .alt | default "" }}
+{{ $sizes := .sizes | default "" }}
+
+{{ if not $src }}
+  {{ errorf "Missing required parameter 'src' in image partial" }}
+{{ end }}
+
+{{ $dirname := path.Dir $src }}
+{{ $basename := replaceRE "\\.[^.]+$" "" (path.Base $src) }}
+
+{{ $url := printf "%s/%s/%s" site.Params.staticurl $dirname $basename }}
+
+{{ if eq hugo.Environment "development" }}
+    <img 
+        class="{{ $class }}"
+        src="/images/{{ $src }}"
+        sizes="{{ $sizes }}"
+        alt="{{ $alt }}"
+    >
+{{ else }}
+    <img 
+        class="{{ $class }}"
+        src="{{ $url }}-512w.webp"
+        srcset="{{ $url }}-384w.avif 384w,
+        {{ $url }}-512w.avif 512w,
+        {{ $url }}-640w.avif 640w,
+        {{ $url }}-768w.avif 768w,
+        {{ $url }}-1024w.avif 1024w,
+        {{ $url }}-1280w.avif 1280w,
+        {{ $url }}-1920w.avif 1920w,
+        {{ $url }}-2560w.avif 2560w"
+        alt="{{ $alt }}"
+    >
+{{ end }}
