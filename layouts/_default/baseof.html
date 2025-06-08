@@ -13,19 +13,13 @@
   <meta name="description" content="Mies lännestä kertoo elämästä Thaimaassa.">
   <meta property="og:description" content="Mies lännestä kertoo elämästä Thaimaassa.">
 
-  {{ $imageResource := resources.Get (printf "images/%s" .Params.banner) }}
+  {{ if .Params.banner }}
+    {{ $dirname := path.Dir .Params.banner }}
+    {{ $basename := replaceRE "\\.[^.]+$" "" (path.Base .Params.banner) }}
+    {{ $url := printf "%s/%s/%s" .Site.Params.staticurl $dirname $basename }}
 
-  {{ if .IsHome }}
-    {{ $sectionPages := where .Site.RegularPages "Type" "osa-iv" }}
-    {{ range first 1 $sectionPages }}
-      {{ $imageResource := resources.Get (printf "images/%s" .Params.banner) }}
-    {{ end }}
+    <meta property="og:image" content="{{ $url }}-512w.webp">
   {{ end }}
-
-  {{ with $imageResource }}
-    {{ $resizedHero768 := $imageResource.Resize "768x q90 webp"}}
-    <meta property="og:image" content="{{ $resizedHero768.RelPermalink }}">
-  {{ end}}
 
   <link rel="preload" href="/fonts/noto-sans-thai-looped-v14-latin_latin-ext_thai-300.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/noto-sans-thai-looped-v14-latin_latin-ext_thai-700.woff2" as="font" type="font/woff2" crossorigin>
