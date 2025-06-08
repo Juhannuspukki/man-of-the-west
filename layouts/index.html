@@ -12,13 +12,13 @@
   {{ $paginator := .Paginate (where .Site.RegularPages "Type" "osa-iv") }}
 
   {{ range $index, $page := $paginator.Pages }}
-    {{ if eq $index 0 }}
-      <!-- This is the first element, apply special appearance -->
-      {{ block "index-card" . }}{{ partial "index-card" . }}{{ end }}
+    {{ if and (eq $index 0) (eq $paginator.PageNumber 1) }}
+      <!-- This is the first element on the first page, apply special appearance -->
+      {{ block "h-card-index" . }}{{ partial "h-card-index" . }}{{ end }}
       <p class="articles">Vanhemmat</p>
     {{ else }}
-      <!-- This is not the first element, apply regular appearance -->
-      {{ block "card" . }}{{ partial "h-card" . }}{{ end }}
+      <!-- This is not the first element on first page, apply regular appearance -->
+      {{ block "h-card" . }}{{ partial "h-card" . }}{{ end }}
     {{ end }}
   {{ end }}
 
