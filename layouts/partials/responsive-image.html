@@ -18,12 +18,19 @@
 {{ $url := printf "%s/%s/%s" site.Params.staticurl $dirname $basename }}
 
 {{ if eq hugo.Environment "development" }}
-    <img 
-        class="{{ $class }}"
-        src="/images/{{ $src }}"
-        sizes="{{ $sizes }}"
-        alt="{{ $alt }}"
-    >
+
+    {{ $img := resources.Get (printf "images/%s" $src) }}
+
+    {{ if $img }}
+      <img 
+          class="{{ $class }}"
+          src="{{ $img.RelPermalink }}"
+          sizes="{{ $sizes }}"
+          alt="{{ $alt }}"
+      >
+      {{ else }}
+        {{ warnf "Image %s not found" $src }}
+    {{ end }}
 {{ else }}
     <img 
         class="{{ $class }}"

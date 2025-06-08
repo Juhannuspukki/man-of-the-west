@@ -4,8 +4,8 @@
 
 set -e
 
-SOURCE_DIR=$(realpath "./static/images")
-DEST_DIR=$(realpath "./static/optimized_images")
+SOURCE_DIR=$(realpath "./assets/images")
+DEST_DIR=$(realpath "./assets/optimized_images")
 
 if [[ -z "$SOURCE_DIR" || -z "$DEST_DIR" ]]; then
   echo "Usage: $0 <source_dir> <dest_dir>"

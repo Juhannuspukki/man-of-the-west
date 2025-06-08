@@ -6,7 +6,6 @@ pagination.path = "sivu"
 timeout = 100000
 pagination.pagerSize = 30
 summaryLength = 10
-ignoreFiles = ['content/images/.*']
 
 [params]
 staticurl = "https://static.xn--mieslnnest-u5af.fi"
@@ -14,7 +13,6 @@ staticurl = "https://static.xn--mieslnnest-u5af.fi"
 [languages]
   [languages.fi]
     languageCode = "fi"
-
 
 [markup.goldmark.renderer]
 unsafe = true
