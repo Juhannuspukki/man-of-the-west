@@ -1,6 +1,6 @@
 <a class="h-card no-underline index-card" href="{{ .RelPermalink }}">
   {{ if .Params.banner }}
-    {{ partial "responsive-image.html" (dict "class" "h-card-banner" "src" .Params.banner "alt" "Thumbnail image" "sizes" "530px") }}
+    {{ partial "responsive-image.html" (dict "class" "h-card-banner" "src" .Params.banner "alt" "Thumbnail image" "sizes" "(max-width: 664px) calc(100vw - 2rem), 530px") }}
   {{ end }}
   <div class="h-card-summary-container">
     <p class="time">
