@@ -29,7 +29,7 @@
     display: block;
     margin: auto;
     padding: 0 1rem;
-    aspect-ratio: 16/9;
+    aspect-ratio: 16/10;
     .hero {
       width: 100%;
       height: 100%;
@@ -158,7 +158,7 @@
     display: block;
     .h-card-banner {
       display: block;
-      height: 10rem;
+      aspect-ratio: 16/10;
       margin-bottom: 1rem;
     }
     .read-more {

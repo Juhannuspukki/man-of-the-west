@@ -1,14 +1,18 @@
 .hero {
   position: relative;
-  min-height: 20rem;
-  max-height: 40rem;
+  aspect-ratio: 16/10;
   width: calc(100% - 2rem);
   max-width: 768px;
   display: block;
   margin: auto;
   padding: 0 1rem;
-  aspect-ratio: 16/9;
   object-fit: cover;
+  &:hover {
+    transform: scale(1.02, 1.02);
+  }
+  @media only screen and (max-width: 600px) {
+    aspect-ratio: auto;
+  }
 }
 
 .title-container {
