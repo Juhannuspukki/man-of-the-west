@@ -14,7 +14,7 @@
                     {{ partial "icons/temperature-max" . }} <span>{{ .tempMax }}°C</span>
                 </div>
                 <div>
-                    {{ partial "icons/wind" . }} <span>{{ .wind }} m/s</span>
+                    {{ partial "icons/wind" . }} <span>{{ .wind }} m/s</span>
                 </div>
                 <div>
                     {{ partial "icons/temperature-min" . }} <span>{{ .tempMin }}°C</span>
@@ -63,7 +63,7 @@
                     {{ $aqiColor := printf "rgb(%d, %d, %d)" (int (math.Round $r)) (int (math.Round $g)) (int (math.Round $b)) }}
                     
                     {{ partial "icons/lungs" . }}
-                    <span>AQI {{ .aqi }}</span>
+                    <span>AQI {{ .aqi }}</span>
                     <div class="dot" style="background-color: {{ $aqiColor | safeCSS }}"></div>
                 </div>
             </div>
