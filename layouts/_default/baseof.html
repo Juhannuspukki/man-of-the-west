@@ -38,12 +38,12 @@
   <link rel="icon" type="image/png" href="favicons/favicon-16x16.png" sizes="16x16" />
   <link rel="icon" type="image/png" href="favicons/favicon-128.png" sizes="128x128" />
 
-  {{ $style := resources.Get "scss/index.scss" | css.Sass }}
-  <link rel="stylesheet" href="{{ $style.RelPermalink }}" />
+  {{ $style := resources.Get "scss/index.scss" | css.Sass | fingerprint "sha512" }}
+  <link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}" />
 
   <link rel="alternate"
         type="application/rss+xml"
-        href="https://mieslännestä.fi/index.xml"
+        href="{{ $.Site.BaseURL }}/index.xml"
         title="{{ .Site.Title }}">
 
 </head>
