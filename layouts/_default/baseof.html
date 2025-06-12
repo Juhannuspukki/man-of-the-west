@@ -5,11 +5,17 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <base href="{{ $.Site.BaseURL }}">
-  <title>{{ .Title }} - {{ $.Site.Title }}</title>
+
+  {{ if .IsHome }}
+    <title>{{ $.Site.Title }}</title>
+    <meta property="og:title" content="{{ $.Site.Title }}" />
+  {{ else }}
+    <title>{{ .Title }} - {{ $.Site.Title }}</title>
+    <meta property="og:title" content="{{ $.Site.Title }} - {{ .Title }}" />
+  {{ end}}
 
   <meta property="og:url" content="{{ .Permalink }}" />
 
-  <meta property="og:title" content="{{ $.Site.Title }} - {{ .Title }}" />
   <meta name="description" content="Mies lännestä kertoo elämästä Thaimaassa.">
   <meta property="og:description" content="Mies lännestä kertoo elämästä Thaimaassa.">
 
@@ -43,7 +49,7 @@
 
   <link rel="alternate"
         type="application/rss+xml"
-        href="{{ $.Site.BaseURL }}/index.xml"
+        href="{{ $.Site.BaseURL }}index.xml"
         title="{{ .Site.Title }}">
 
 </head>
