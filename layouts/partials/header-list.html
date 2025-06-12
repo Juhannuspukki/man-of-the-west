@@ -1,6 +1,5 @@
 {{ if .Params.banner }}
   <header class="list-header">
-    {{ block "top-nav" . }}{{ partial "top-nav" . }}{{end}}
     {{ $dirname := path.Dir .Params.banner }}
     {{ $basename := replaceRE "\\.[^.]+$" "" (path.Base .Params.banner) }}
     {{ $url := printf "%s/%s/%s" .Site.Params.staticurl $dirname $basename }}

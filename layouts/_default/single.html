@@ -1,21 +1,12 @@
-{{ define "main" }} {{ $section := .Site.GetPage "section" .Section }}
+{{ define "main" }}
 
-<main>
-    <div class="content">
-        {{ with .Params.song }}
-            {{ block "song-of-the-day" . }}{{ partial "song-of-the-day" . }}{{end}}
-        {{ end }}
-        {{ if .Params.weather }}
-            {{ $weatherData := .Params.weather }}
-            {{ $weatherWithContext := dict "weather" $weatherData "filePath" .File.Path }}
-            {{ block "weather" $weatherWithContext }}
-                {{ partial "weather" . }}
-            {{end}} 
-        {{ end }}
-        <article>
+<main id="main">
+    <article>
+        {{ partial "header-single" . }}
+        <section class="content">
             {{- .Content -}}
-        </article>
-    </div>
+        </section>
+    </article>
 </main>
 
 {{ block "bottom-nav" . }}{{ partial "bottom-nav" . }}{{end}}

@@ -1,6 +1,5 @@
 {{ if .Params.banner }}
-    <header>
-        {{ block "top-nav" . }}{{ partial "top-nav" . }}{{end}}
+    <header class="single-header">
         {{ if not .Params.useNavHeadline }}
             <div class="title-container">
                 <p class="episode-number">
@@ -10,9 +9,9 @@
                 <h1 class="main-title">{{ .Title }}</h1>
                 {{ if .Params.date }}
                     <a href="https://translate.google.com/translate?hl=&sl=fi&tl=en&u=https://xn--mieslnnest-u5af.fi{{ .RelPermalink }}">
-                        <p class="main-subtitle">
-                            {{ time.Format "Monday 2. January 2006" .Params.date}}
-                        </p>
+                        <time class="main-subtitle" datetime="{{ .Params.date }}">
+                            {{ time.Format "Monday 2. January 2006" .Params.date }}
+                        </time>
                     </a>
                 {{ else }}
                     <p class="main-subtitle">
@@ -29,5 +28,20 @@
         <a href="{{ $url }}-2560w.avif" aria-label="Täysikokoinen kuva">
             {{ partial "responsive-image.html" (dict "class" "hero" "src" .Params.banner "alt" "" "sizes" "(max-width: 768px) calc(100vw - 2rem), 768px") }}
         </a>
+        {{ with .Params.song }}
+            {{ block "song-of-the-day" . }}{{ partial "song-of-the-day" . }}{{end}}
+        {{ end }}
+        {{ if .Params.weather }}
+            {{ $weatherData := .Params.weather }}
+            {{ $weatherWithContext := dict "weather" $weatherData "filePath" .File.Path }}
+            {{ block "weather" $weatherWithContext }}
+                {{ partial "weather" . }}
+            {{end}} 
+        {{ end }}
+        {{ if .Params.henkilöhahmot }}
+            {{ block "characters" . }}
+                {{ partial "characters" . }}
+            {{end}} 
+        {{ end }}
     </header>
 {{ end }}

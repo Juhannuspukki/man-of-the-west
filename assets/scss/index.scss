@@ -1,9 +1,13 @@
 @import "constants";
 @import "fonts";
 @import "tags";
+@import "weather";
 @import "single";
 @import "nav";
 @import "form";
+@import "taxonomies";
+@import "characters";
+@import "song";
 
 .container {
   max-width: 768px;
@@ -35,6 +39,7 @@
       height: 100%;
       margin: 0;
       padding: 0;
+      object-fit: cover;
     }
     .list-header-title-container {
       position: absolute;
@@ -66,20 +71,22 @@
   }
 }
 
-.h-card {
+.article-card {
   display: grid;
   grid-template-columns: calc(40% - 0.5rem) calc(60% - 0.5rem);
   grid-gap: 1rem;
   margin-bottom: 2rem;
   transition: all 0.1s ease-in-out;
-  .h-card-banner {
+  .article-card-banner {
     height: 100%;
     width: 100%;
+    aspect-ratio: 2/1; // bogus aspect ratio to ensure images are not taller than text next to them
     object-fit: cover;
   }
-  .h-card-summary-container {
+  .article-card-summary-container {
     position: relative;
     .time {
+      display: block;
       font-family: $header-font;
       text-transform: uppercase;
       margin: 0;
@@ -94,7 +101,6 @@
       font-size: 0.9rem;
     }
     h2 {
-      text-transform: uppercase;
       margin: 0.25rem 0;
       font-size: 1.3rem;
       overflow-wrap: break-word;
@@ -108,23 +114,32 @@
   }
   &:hover {
     transform: scale(1.02, 1.02);
-    p, span, h2 {
-      color: #E87800;
+    p, span, h2, time {
+      color: $hover-color;
+      background: $hover-color;
+      background-clip: text;
+      color: transparent;
+      -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent; 
     }
   }
   &:last-of-type {
     margin-bottom: 1rem;
   }
-  &.index-card {
-    grid-template-columns: calc(70% - 0.5rem) calc(30% - 0.5rem);
-    @media only screen and (max-width: 664px) {
-      grid-template-columns: 100%;
-      margin-bottom: 4rem;
-    }
-  }
   @media only screen and (max-width: 600px) {
     grid-template-columns: 100%;
     margin-bottom: 4rem;
+    .article-card-banner {
+      aspect-ratio: auto;
+    }
+  }
+}
+
+.first-card > .article-card {
+  grid-template-columns: calc(75% - 0.5rem) calc(25% - 0.5rem);
+  margin-bottom: 4rem;
+  @media only screen and (max-width: 664px) {
+    grid-template-columns: 100%;
   }
 }
 
@@ -144,19 +159,18 @@
   height: 100%;
   h2 {
     font-family: $header-font;
-    text-transform: uppercase;
   }
   .bottom-grid {
     display: grid;
     grid-template-columns: calc(50% - 0.5rem) calc(50% - 0.5rem);
-    grid-gap: 1rem;
+    gap: 2rem;
     @media only screen and (max-width: 500px) {
       grid-template-columns: 100%;
     }
   }
-  .h-card {
+  .article-card {
     display: block;
-    .h-card-banner {
+    .article-card-banner {
       display: block;
       aspect-ratio: 16/10;
       margin-bottom: 1rem;
@@ -173,7 +187,6 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  text-transform: uppercase;
   text-align: center;
   h2 {
     font-size: 1rem;
@@ -183,56 +196,6 @@
     font-size: 2rem;
     font-family: $header-font;
     margin: 0;
-  }
-}
-
-.song-container {
-  max-width: 650px;
-  margin: 1rem auto;
-  button {
-    height: 80px;
-    margin: calc(3.64px / 2) 0;
-    width: 100%;
-    border-radius: 12px;
-    cursor: pointer;
-    border: 1px #fff solid;
-    background-color: transparent;
-    color: #FFFFFF;
-    padding: 0;
-    .cookie-button-title {
-      display: block;
-      font-family: $header-font;
-      text-transform: uppercase;
-      font-size: 1rem;
-      margin-bottom: 0.5rem;
-    }
-    .cookie-button-description {
-      font-family: $bread-font;
-      font-size: 0.85rem;
-    }
-    &:hover {
-      color: #E87800;
-      border-color: #E87800;
-    }
-  }
-}
-
-.disable-cookies {
-  max-width: 650px;
-  margin: 1rem auto;
-  button {
-    cursor: pointer;
-    border-radius: 12px;
-    background-color: transparent;
-    font-family: $bread-font;
-    font-size: 0.85rem;
-    color: #FFFFFF;
-    border: 1px #fff solid;
-    padding: 0.5rem;
-    &:hover {
-      color: #E87800;
-      border-color: #E87800;
-    }
   }
 }
 
@@ -261,7 +224,7 @@
       }
       &:not(.active):not(.disabled):hover {
         a {
-          background-color: #E87800;
+          background-color: $hover-color;
         }
       }
       &:first-of-type {
