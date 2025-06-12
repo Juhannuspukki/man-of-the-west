@@ -1,0 +1,40 @@
+.character-showcase {
+    h2 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+      text-align: center;
+    }
+    .character-grid {
+      display: flex;  
+      gap: 2rem;
+      margin-bottom: 3rem;
+      justify-content: center;
+      .character {
+        text-decoration: none;
+        &:hover {
+          .svg-container svg, h3{
+            color: $hover-color;
+            fill: $hover-color;
+          }
+        }
+        .svg-container {
+          height: 4rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          svg {
+            fill: #fff;
+            height: 100%;
+            max-height: 2.5rem;
+            max-width: 3rem;
+          }
+        }
+        h3 {
+          margin: 0 auto;
+          text-align: center;
+          font-size: 1rem;
+        }
+      }
+    }
+  }

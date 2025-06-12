@@ -1,19 +1,21 @@
-{{ define "header" }}
+{{ define "main" }}
+
+<main>
 
   {{ partial "header-list" . }}
 
-{{ end }}
+  <section class="container">
+    <p class="articles">{{ len .Pages }} Artikkelia</p>
 
-{{ define "main" }}
+    {{ $paginator := .Paginate (.Pages.Reverse) }}
 
-<div class="container">
-  <p class="articles">{{ len .Pages }} Artikkelia</p>
-  {{ range (.Paginate ( .Pages.Reverse )).Pages }}
-    {{ block "card" . }}{{ partial "h-card" . }}{{end}}
-  {{ end }}
-  <div class="pagination-container">
+    {{ range $index, $page := $paginator.Pages }}
+      {{ partial "article-card" . }}
+    {{ end }}
+  </section>
+  <section class="pagination-container">
     {{ partial "pagination.html" . }}
-  </div>
-</div>
+  </section>
+</main>
 
 {{ end }}

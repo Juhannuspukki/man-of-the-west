@@ -1,3 +1,7 @@
 $header-font: "Avenir Next Condensed", "Roboto Condensed", sans-serif;
 $bread-font: "Noto Sans Thai Looped", sans-serif;
 $bread-weight: 300;
+$border-radius: 1rem;
+
+$colors: #dd1c26, #e55513, #E8B200, #B1DE00, #12BE00,#009B64, #0a91c6, #f30d6d;
+$hover-color: nth($colors, random(length($colors)));

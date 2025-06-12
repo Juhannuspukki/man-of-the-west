@@ -1,0 +1,19 @@
+{{ define "main" }}
+
+<main class="container">
+    {{ partial "header-list" . }}
+    <section class="taxonomy-content">
+      {{ .Content }}
+    </section>
+    <section>
+      {{ range sort .Pages "Date" "asc" }}
+      <a href="{{ .RelPermalink }}" class="character-card">
+        <h3>{{ .Title }}</h3>
+        {{ .Content }}
+        <p class="read-more"><strong>Lue lisää&nbsp;→</strong></p>
+      </a>
+      {{ end }}
+    </section>
+</main>
+
+{{ end }}

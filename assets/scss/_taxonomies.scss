@@ -1,0 +1,102 @@
+.taxonomy-article-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    row-gap: 2.5rem;
+    @media only screen and (max-width: 500px) {
+      grid-template-columns: 1fr;
+    }
+    .article-card-compact {
+        position: relative;
+        transition: all 0.1s ease-in-out;
+        &:hover {
+            transform: scale(1.02, 1.02);
+            .article-card-compact-image {
+                filter: brightness(1.2);
+            }
+          }
+        .article-card-compact-content {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            z-index: 100;
+            text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5), 0px 0px 20px rgba(0, 0, 0, 0.5), 0px 0px 10px rgba(0, 0, 0, 0.9);
+            .date {
+                margin: 0 0 0.5rem 0;
+                text-transform: uppercase;
+                font-size: 1rem;
+                font-family: $header-font;
+                font-weight: 700;           
+            }
+            h3 {
+                margin: 0;
+                font-size: 1.5rem;
+            }
+        }   
+        .article-card-compact-image {
+            display: block;
+            width: 100%;
+            aspect-ratio: 16/10;
+            object-fit: cover;
+        }
+    }
+}
+
+.character-profile {
+    .character-header {
+        .pre-title {
+            text-align: center;
+            text-transform: uppercase;
+            font-family: $header-font;
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin: 0 0 1rem;
+        }
+        h1 {
+            text-align: center;
+            margin: 0 0 2rem;
+        }
+        svg {
+            display: block;
+            fill: #fff;
+            max-height: 5rem;
+            max-width: 5rem;
+            margin: 0 auto;
+            margin-bottom: 2.5rem;
+        }
+        .date {
+            display: block;
+            text-transform: uppercase;
+            font-family: $header-font;
+            text-align: center;
+        }
+    }
+    .character-content {
+        margin-bottom: 3rem;
+    }
+}
+
+.taxonomy-content {
+    h2 {
+        margin-bottom: 1rem;
+    }
+    margin-bottom: 3rem;
+}
+
+
+.character-card {
+    display: block;
+    margin-bottom: 3rem;
+    .read-more {
+        font-family: $header-font;
+        text-transform: uppercase;
+    }
+    &:hover {
+        h3, p {
+            color: $hover-color;
+        }
+    }
+    h3 {
+        margin: 0 0 1rem;
+    }
+}

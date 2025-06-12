@@ -1,7 +1,7 @@
-<section class="weather">
+<aside class="weather">
     {{ range .weather }}
         <div class="weather-item">
-            <h2>{{ .city }}</h3>
+            <h2>{{ .city }}</h2>
             <div class="weather-data">
                 {{ $iconPath := printf "icons/%s" .symbol }}
                 {{ $partialPath := printf "partials/%s.html" $iconPath }}
@@ -44,6 +44,7 @@
                         {{ $r = 255 }}
                         {{ $g = sub 128 (mul 128 $progress) }}
                         {{ $b = 0 }}
+                        
                     {{ else if le $aqi 250 }}
                         {{ $progress := div (sub $aqi 175) 75 }}
                         {{ $r = sub 255 (mul 127 $progress) }}
@@ -69,4 +70,4 @@
             </div>
         </div>
     {{ end }}
-</section>
+</aside>

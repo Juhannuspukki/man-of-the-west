@@ -1,43 +1,45 @@
-.hero {
-  position: relative;
-  aspect-ratio: 16/10;
-  width: calc(100% - 2rem);
-  max-width: 768px;
-  display: block;
-  margin: auto;
-  padding: 0 1rem;
-  object-fit: cover;
-  &:hover {
-    transform: scale(1.02, 1.02);
+.single-header {
+  .title-container {
+    margin: 2rem auto;
+    max-width: 850px;
+    .main-title {
+      text-align: center;
+      display: block;
+      font-size: 2rem;
+      padding: 0 1rem;
+      margin: 0 0 1rem 0;
+    }
+    .episode-number {
+      text-align: center;
+      text-transform: uppercase;
+      font-family: $header-font;
+      font-size: 1.1rem;
+      font-weight: 400;
+    }
+    .main-subtitle {
+      display: block;
+      text-align: center;
+      text-transform: uppercase;
+      font-family: $header-font;
+      font-size: 1.1rem;
+      font-weight: 400;
+    }
   }
-  @media only screen and (max-width: 600px) {
-    aspect-ratio: auto;
-  }
-}
-
-.title-container {
-  margin: 2rem auto;
-  max-width: 850px;
-  .main-title {
-    text-align: center;
+  .hero {
+    position: relative;
+    aspect-ratio: 16/10;
+    width: calc(100% - 2rem);
+    max-width: 768px;
     display: block;
-    font-size: 2rem;
-    padding: 0 1rem;
-    margin: 0 0 1rem 0;
-  }
-  .episode-number {
-    text-align: center;
-    text-transform: uppercase;
-    font-family: $header-font;
-    font-size: 1.1rem;
-    font-weight: 400;
-  }
-  .main-subtitle {
-    text-align: center;
-    text-transform: uppercase;
-    font-family: $header-font;
-    font-size: 1.1rem;
-    font-weight: 400;
+    margin: 0 auto 3rem;
+    object-fit: cover;
+    transition: all 0.1s ease-in-out;
+    &:hover {
+      transform: scale(1.02, 1.02);
+    }
+    @media only screen and (max-width: 600px) {
+      aspect-ratio: auto;
+    }
   }
 }
 
@@ -55,7 +57,6 @@
     color: #FFF;
   }
   h2 {
-    text-transform: uppercase;
     font-size: calc(1rem + 1.2vw);
     line-height: 1.4;
   }
@@ -64,59 +65,5 @@
   }
   .no-underline {
     text-decoration: none;
-  }
-}
-
-.weather {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 3rem;
-  .weather-item {
-    text-align: center;
-    .weather-data {
-      display: grid;
-      grid-template-columns: auto auto auto;
-      grid-template-rows: 1fr 1fr;
-      column-gap: 1.75rem;
-      row-gap: 0.5rem;
-      > svg {
-        fill: #FFFFFF;
-        height: 75%;
-        width: auto;
-        max-width: 100%;
-        grid-row: span 2;
-        justify-self: center;
-        align-self: center;
-      }
-      div {          
-        display: flex;
-        height: 1.75rem;
-        svg {
-          fill: #FFFFFF;
-          height: 100%;
-          width: auto;
-          max-width: 100%;
-          margin-right: 0.5rem;
-        }
-        span {
-          margin: 0 0 -2px;
-          align-self: center;
-          color: #FFFFFF;
-          font-size: 1.25rem;
-          font-family: $header-font;
-          font-weight: 700;
-        }
-        .dot {
-          width: 0.4rem;
-          height: 0.4rem;
-          border-radius: 50%;
-        }
-      }
-      }
-      h2 {
-        font-size: 1.25rem;
-        margin: 0 0 1rem;
-        font-weight: 700;
-      }
   }
 }

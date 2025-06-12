@@ -14,12 +14,16 @@
       padding: 1rem;
       &:hover {
         path {
-          fill: #E87800;
+          fill: $hover-color;
         }
       }
     }
     .side-menu {
-      display: none;
+      position: absolute;
+      top: -4rem;
+      &:focus {
+        top: 4rem; /* brings it back onscreen */
+      }
       &:checked ~ nav {
         grid-template-rows: 1fr;
       }
@@ -64,7 +68,7 @@
             color: #000000;
           }
           &:hover {
-            color: #E87800;
+            color: $hover-color;
           }
           .menu-title {
             flex-grow: 1;
@@ -80,6 +84,20 @@
   }
 }
 
+.skip-link {
+  position: absolute;
+  top: -4rem; /* hides it offscreen */
+  left: 0;
+  padding: 1rem;
+  z-index: 100;
+  text-decoration: none;
+  transition: top 0.3s;
+  &:focus {
+    top: 4rem; /* brings it back onscreen */
+  }
+  
+}
+
 /* Menu Icon */
 .hamburger {
   cursor: pointer;
@@ -87,10 +105,10 @@
   padding: 2rem 1rem;
   &:hover {
     .hamburger-line {
-      background-color: #E87800;
+      background-color: $hover-color;
       &::before,
       &::after{
-        background-color: #E87800;
+        background-color: $hover-color;
       }
     }
   }

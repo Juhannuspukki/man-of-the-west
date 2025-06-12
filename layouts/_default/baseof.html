@@ -48,9 +48,9 @@
 
 </head>
 
-<body>
-    {{ block "header" . }}{{ partial "header-single" . }}{{end}}
-  
+<body>  
+    {{ block "top-nav" . }}{{ partial "top-nav" . }}{{end}}
+
     {{ block "main" . }}{{end}}
   
     {{ block "footer" . }}{{ partial "footer" . }}{{end}}

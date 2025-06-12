@@ -3,13 +3,13 @@
         <div>
             {{ with .PrevInSection }}
                 <h2>Edellinen</h2>
-                {{ partial "h-card" . }}
+                {{ partial "article-card" . }}
             {{ end }}
         </div>
         <div>
             {{ with .NextInSection }}
                 <h2>Seuraava</h2>
-                {{ partial "h-card" . }}
+                {{ partial "article-card" . }}
             {{ end }}
         </div>
     </div>

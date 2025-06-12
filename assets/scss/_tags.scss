@@ -9,16 +9,21 @@ header {
   margin: 4.5rem 0 3rem;
 }
 
+time {
+  color: #fff;
+}
+
 h1 {
   font-family: $header-font;
+  text-transform: uppercase;
   font-weight: 700;
   color: #fff;
-  text-transform: uppercase;
   font-size: calc(1.5rem + 2.2vw);
 }
 
 h2 {
   font-family: $header-font;
+  text-transform: uppercase;
   font-weight: 700;
   color: #fff;
   font-size: calc(1rem + 1.6vw);
@@ -27,6 +32,7 @@ h2 {
 
 h3 {
   font-family: $header-font;
+  text-transform: uppercase;
   font-weight: 700;
   color: #fff;
 }
@@ -48,6 +54,10 @@ p, ul, ol {
   font-variation-settings: "wght" 50;
   font-weight: $bread-weight;
   color: #fff;
+}
+
+img {
+  border-radius: $border-radius;
 }
 
 figure {
@@ -76,7 +86,7 @@ figure {
   &:hover {
     transform: scale(1.02, 1.02);
     figcaption {
-      color: #E87800;
+      color: $hover-color;
     }
   }
 }

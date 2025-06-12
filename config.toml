@@ -15,10 +15,12 @@ staticurl = "https://static.xn--mieslnnest-u5af.fi"
     languageCode = "fi"
 
 [markup.goldmark.renderer]
-unsafe = true
+  unsafe = true
 
+[taxonomies]
+  "henkilöhahmo" = "henkilöhahmot"
 
 # RSS, categories and tags disabled for an easy start
 # See configuration options for more details:
 # https://gohugo.io/getting-started/configuration/#toml-configuration
-disableKinds = ["taxonomy"]
+disableKinds = ['categories', 'tags']
