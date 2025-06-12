@@ -82,6 +82,7 @@
     width: 100%;
     aspect-ratio: 2/1; // bogus aspect ratio to ensure images are not taller than text next to them
     object-fit: cover;
+    transition: filter 0.2s ease-in-out;
   }
   .article-card-summary-container {
     position: relative;
@@ -121,6 +122,9 @@
       color: transparent;
       -webkit-background-clip: text; 
       -webkit-text-fill-color: transparent; 
+    }
+    .article-card-banner {
+      filter: brightness(1.2);
     }
   }
   &:last-of-type {

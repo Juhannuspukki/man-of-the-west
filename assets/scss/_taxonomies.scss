@@ -38,6 +38,7 @@
             width: 100%;
             aspect-ratio: 16/10;
             object-fit: cover;
+            transition: filter 0.2s ease-in-out;
         }
     }
 }
