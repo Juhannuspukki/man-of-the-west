@@ -21,9 +21,6 @@
     .side-menu {
       position: absolute;
       top: -4rem;
-      &:focus {
-        top: 4rem; /* brings it back onscreen */
-      }
       &:checked ~ nav {
         grid-template-rows: 1fr;
       }

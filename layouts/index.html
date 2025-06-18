@@ -10,9 +10,7 @@
       {{ if and (eq $index 0) (eq $paginator.PageNumber 1) }}
         <!-- This is the first element on the first page, apply special appearance -->
         <p class="articles">Uusin</p>
-        <div class="first-card">
-          {{ partial "article-card" . }}
-        </div>
+        {{ partial "article-card" (dict "context" . "first" true) }}
         <p class="articles">Vanhemmat</p>
       {{ else }}
         {{ partial "article-card" . }}

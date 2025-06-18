@@ -77,6 +77,15 @@
   grid-gap: 1rem;
   margin-bottom: 2rem;
   transition: all 0.1s ease-in-out;
+
+  &.first-article {
+    grid-template-columns: calc(75% - 0.5rem) calc(25% - 0.5rem);
+    margin-bottom: 4rem;
+    @media only screen and (max-width: 664px) {
+      grid-template-columns: 100%;
+    }
+  }
+  
   .article-card-banner {
     height: 100%;
     width: 100%;
@@ -136,14 +145,6 @@
     .article-card-banner {
       aspect-ratio: auto;
     }
-  }
-}
-
-.first-card > .article-card {
-  grid-template-columns: calc(75% - 0.5rem) calc(25% - 0.5rem);
-  margin-bottom: 4rem;
-  @media only screen and (max-width: 664px) {
-    grid-template-columns: 100%;
   }
 }
 
