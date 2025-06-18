@@ -1,17 +1,29 @@
-<a class="article-card no-underline" href="{{ .RelPermalink }}">
-  {{ if .Params.banner }}
-    {{ partial "responsive-image.html" (dict "class" "article-card-banner" "src" .Params.banner "alt" "" "sizes" "(max-width: 600px) calc(100vw - 2rem), 300px") }}
+{{/* Handle all possible calling conventions */}}
+{{ $page := . }}
+{{ $isFirst := false }}
+{{ if isset . "context" }}
+  {{ $page = .context }}
+  {{ $isFirst = .first | default false }}
+{{ end }}
+
+<a class="article-card no-underline{{ if $isFirst }} first-article{{ end }}" href="{{ $page.RelPermalink }}">
+  {{ if $page.Params.banner }}
+    {{ if $isFirst }}
+      {{ partial "responsive-image.html" (dict "class" "article-card-banner" "src" $page.Params.banner "alt" "" "sizes" "(max-width: 600px) calc(100vw - 2rem), 568px") }}
+    {{ else }}
+      {{ partial "responsive-image.html" (dict "class" "article-card-banner" "src" $page.Params.banner "alt" "" "sizes" "(max-width: 600px) calc(100vw - 2rem), 300px") }}
+    {{ end }}
   {{ end }}
   <div class="article-card-summary-container">
-    <time class="time" datetime="{{ .Params.date }}">
-      <strong>{{ time.Format "Mon 2.1.2006" .Date }}</strong>
+    <time class="time" datetime="{{ $page.Params.date }}">
+      <strong>{{ time.Format "Mon 2.1.2006" $page.Date }}</strong>
     </time>
-    <h2>{{ .Title }}</h2>
+    <h2>{{ $page.Title }}</h2>
     <p class="reading-time">
-      {{ $readingTime := math.Ceil (div (.Content | countwords) 200.0) }}
+      {{ $readingTime := math.Ceil (div ($page.Content | countwords) 200.0) }}
       <i>Lukuaika {{ $readingTime }} minuutti{{ if not (eq 1 (int $readingTime)) }}a{{ end}}</i>
     </p>
-    <p class="summary">{{ .Content | plainify | strings.Truncate 190 }}</p>
+    <p class="summary">{{ $page.Content | plainify | strings.Truncate 190 }}</p>
     <span class="read-more"><strong>Lisää&nbsp;→</strong></span>
   </div>
 </a>
