@@ -3,7 +3,24 @@
     <div class="character-grid">
         {{ range .Params.henkilöhahmot }}
             {{ with site.GetPage (printf "/henkilöhahmot/%s" .) }}
-                <a href="{{ .RelPermalink }}" class="character">
+                <a href="{{ .RelPermalink }}" class="character" data-gradient="{{ .RelPermalink | md5 }}">
+                    {{ if .Params.palette }}
+                        <style>
+                            .character[data-gradient="{{ .RelPermalink | md5 }}"] {
+                                --local-gradient: linear-gradient(45deg, {{ .Params.palette | safeCSS }});
+                                --local-svg-gradient: url(#local-gradient-{{ .RelPermalink | md5 }});
+                            }
+                        </style>
+                        <svg width="0" height="0">
+                            <defs>
+                                <linearGradient id="local-gradient-{{ .RelPermalink | md5 }}" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="{{ index (split .Params.palette ",") 0 }}"/>
+                                    <stop offset="50%" stop-color="{{ index (split .Params.palette ",") 1 }}"/>
+                                    <stop offset="100%" stop-color="{{ index (split .Params.palette ",") 2 }}"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    {{ end }}
                     <div class="svg-container">
                         {{ $iconPath := printf "icons/%s" .Params.symbol }}
                         {{ $partialPath := printf "partials/%s.html" $iconPath }}

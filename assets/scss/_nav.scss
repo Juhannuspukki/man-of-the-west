@@ -12,9 +12,12 @@
     svg {
       height: 2rem;
       padding: 1rem;
+      path {
+        fill: #FFFFFF;
+      }
       &:hover {
         path {
-          fill: $hover-color;
+          fill: var(--svg-gradient);
         }
       }
     }
@@ -63,9 +66,18 @@
           &.active {
             background-color: #FFFFFF;
             color: #000000;
+            &:hover {
+              background: var(--gradient);
+              background-clip: border-box;
+              -webkit-background-clip: border-box; 
+              -webkit-text-fill-color: #000000;
+            }
           }
           &:hover {
-            color: $hover-color;
+            background: var(--gradient);
+            background-clip: text;
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent;
           }
           .menu-title {
             flex-grow: 1;
@@ -102,10 +114,10 @@
   padding: 2rem 1rem;
   &:hover {
     .hamburger-line {
-      background-color: $hover-color;
+      background: var(--gradient);
       &::before,
       &::after{
-        background-color: $hover-color;
+        background: var(--gradient);
       }
     }
   }

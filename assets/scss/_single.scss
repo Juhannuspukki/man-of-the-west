@@ -34,11 +34,9 @@
     margin: 0 auto 3rem;
     object-fit: cover;
     transition: all 0.1s ease-in-out;
+    background: var(--gradient);
     &:hover {
       transform: scale(1.02, 1.02);
-    }
-    @media only screen and (max-width: 600px) {
-      aspect-ratio: auto;
     }
   }
 }
@@ -61,6 +59,7 @@
     line-height: 1.4;
   }
   a {
+    position: relative;
     text-decoration: underline;
   }
   .no-underline {

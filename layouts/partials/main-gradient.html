@@ -1,0 +1,26 @@
+{{ $palette := "" }}
+{{ if .IsHome }}
+    {{ $paginator := .Paginate (where .Site.RegularPages "Type" "osa-iv") }}
+    {{ with index $paginator.Pages 0 }}
+        {{ $palette = .Params.palette }}
+    {{ end }}
+{{ else }}
+    {{ $palette = .Params.palette }}
+{{ end }}
+{{ with $palette }}
+    <style>
+    :root {
+        --gradient: linear-gradient(45deg, {{ . }});
+        --svg-gradient: url(#gradient);
+    }
+    </style>
+    <svg width="0" height="0">
+        <defs>
+            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="{{ index (split . ",") 0 }}"/>
+                <stop offset="50%" stop-color="{{ index (split . ",") 1 }}"/>
+                <stop offset="100%" stop-color="{{ index (split . ",") 2 }}"/>
+            </linearGradient>
+        </defs>
+    </svg>
+{{ end }}

@@ -54,7 +54,9 @@
 
 </head>
 
-<body>  
+<body>
+    {{ partial "main-gradient" . }}
+  
     {{ block "top-nav" . }}{{ partial "top-nav" . }}{{end}}
 
     {{ block "main" . }}{{end}}

@@ -8,6 +8,7 @@
 @import "taxonomies";
 @import "characters";
 @import "song";
+@import "cards";
 
 .container {
   max-width: 768px;
@@ -40,6 +41,7 @@
       margin: 0;
       padding: 0;
       object-fit: cover;
+      background: var(--gradient);
     }
     .list-header-title-container {
       position: absolute;
@@ -67,83 +69,6 @@
                0 0 3px rgba(0, 0, 0, 0.2),
                0 0 5px rgba(0, 0, 0, 0.1);
       }
-    }
-  }
-}
-
-.article-card {
-  display: grid;
-  grid-template-columns: calc(40% - 0.5rem) calc(60% - 0.5rem);
-  grid-gap: 1rem;
-  margin-bottom: 2rem;
-  transition: all 0.1s ease-in-out;
-
-  &.first-article {
-    grid-template-columns: calc(75% - 0.5rem) calc(25% - 0.5rem);
-    margin-bottom: 4rem;
-    @media only screen and (max-width: 664px) {
-      grid-template-columns: 100%;
-    }
-  }
-  
-  .article-card-banner {
-    height: 100%;
-    width: 100%;
-    aspect-ratio: 2/1; // bogus aspect ratio to ensure images are not taller than text next to them
-    object-fit: cover;
-    transition: filter 0.2s ease-in-out;
-  }
-  .article-card-summary-container {
-    position: relative;
-    .time {
-      display: block;
-      font-family: $header-font;
-      text-transform: uppercase;
-      margin: 0;
-      font-size: 0.9rem;
-    }
-    .reading-time {
-      margin: 0 0 0.8rem;
-      font-size: 0.9rem;
-    }
-    .summary {
-      margin: 0;
-      font-size: 0.9rem;
-    }
-    h2 {
-      margin: 0.25rem 0;
-      font-size: 1.3rem;
-      overflow-wrap: break-word;
-    }
-    .read-more {
-      display: inline-block;
-      font-family: $header-font;
-      text-transform: uppercase;
-      margin-top: 1rem;
-    }
-  }
-  &:hover {
-    transform: scale(1.02, 1.02);
-    p, span, h2, time {
-      color: $hover-color;
-      background: $hover-color;
-      background-clip: text;
-      color: transparent;
-      -webkit-background-clip: text; 
-      -webkit-text-fill-color: transparent; 
-    }
-    .article-card-banner {
-      filter: brightness(1.2);
-    }
-  }
-  &:last-of-type {
-    margin-bottom: 1rem;
-  }
-  @media only screen and (max-width: 600px) {
-    grid-template-columns: 100%;
-    margin-bottom: 4rem;
-    .article-card-banner {
-      aspect-ratio: auto;
     }
   }
 }
@@ -229,7 +154,8 @@
       }
       &:not(.active):not(.disabled):hover {
         a {
-          background-color: $hover-color;
+          color: #000000;
+          background: var(--gradient);
         }
       }
       &:first-of-type {

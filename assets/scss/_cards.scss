@@ -1,0 +1,113 @@
+.article-card {
+    display: grid;
+    grid-template-columns: calc(40% - 0.5rem) calc(60% - 0.5rem);
+    grid-gap: 1rem;
+    margin-bottom: 2rem;
+    transition: all 0.1s ease-in-out;
+    cursor: pointer;
+  
+    &.first-article {
+      grid-template-columns: calc(75% - 0.5rem) calc(25% - 0.5rem);
+      margin-bottom: 4rem;
+      @media only screen and (max-width: 664px) {
+        grid-template-columns: 100%;
+      }
+    }
+    
+    .article-card-banner {
+      height: 100%;
+      width: 100%;
+      aspect-ratio: 16/10; // bogus aspect ratio to ensure images are not taller than text next to them
+      object-fit: cover;
+      transition: filter 0.2s ease-in-out;
+      background: var(--local-gradient);
+    }
+    .article-card-summary-container {
+      position: relative;
+      .time {
+        display: block;
+        font-family: $header-font;
+        text-transform: uppercase;
+        margin: 0;
+        font-size: 0.9rem;
+      }
+      .reading-time {
+        margin: 0 0 0.8rem;
+        font-size: 0.9rem;
+      }
+      .summary {
+        margin: 0;
+        font-size: 0.9rem;
+      }
+      h2 {
+        margin: 0.25rem 0;
+        font-size: 1.3rem;
+        overflow-wrap: break-word;
+      }
+      .read-more {
+        display: inline-block;
+        font-family: $header-font;
+        text-transform: uppercase;
+        margin-top: 1rem;
+      }
+    }
+    p, span, h2, time {
+      background: transparent; 
+    }
+    &:hover {
+      transform: scale(1.02, 1.02);
+      p, span, h2, time {
+        background: var(--local-gradient);
+        @include gradient-text;
+      }
+      .article-card-banner {
+        filter: brightness(1.2);
+      }
+    }
+    &:last-of-type {
+      margin-bottom: 1rem;
+    }
+    @media only screen and (max-width: 600px) {
+      grid-template-columns: 100%;
+      margin-bottom: 4rem;
+      .article-card-banner {
+        aspect-ratio: 16/10;
+      }
+    }
+}
+
+.article-card-compact {
+    position: relative;
+    transition: all 0.1s ease-in-out;
+    &:hover {
+        transform: scale(1.02, 1.02);
+        .article-card-compact-image {
+            filter: brightness(1.2);
+        }
+      }
+    .article-card-compact-content {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        z-index: 100;
+        text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5), 0px 0px 20px rgba(0, 0, 0, 0.5), 0px 0px 10px rgba(0, 0, 0, 0.9);
+        .date {
+            margin: 0 0 0.5rem 0;
+            text-transform: uppercase;
+            font-size: 1rem;
+            font-family: $header-font;
+            font-weight: 700;           
+        }
+        h3 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+    }   
+    .article-card-compact-image {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16/10;
+        object-fit: cover;
+        transition: filter 0.2s ease-in-out;
+    }
+}

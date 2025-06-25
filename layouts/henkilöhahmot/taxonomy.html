@@ -7,11 +7,16 @@
     </section>
     <section>
       {{ range sort .Pages "Date" "asc" }}
-      <a href="{{ .RelPermalink }}" class="character-card">
-        <h3>{{ .Title }}</h3>
-        {{ .Content }}
-        <p class="read-more"><strong>Lue lisää&nbsp;→</strong></p>
-      </a>
+        <a href="{{ .RelPermalink }}" class="character-card" data-gradient="{{ .RelPermalink | md5 }}">
+          <style>
+            .character-card[data-gradient="{{ .RelPermalink | md5 }}"] {
+              --local-gradient: linear-gradient(45deg, {{ .Params.palette | safeCSS }});
+            }
+          </style>
+          <h3>{{ .Title }}</h3>
+          {{ .Content }}
+          <p class="read-more"><strong>Lue lisää&nbsp;→</strong></p>
+        </a>
       {{ end }}
     </section>
 </main>

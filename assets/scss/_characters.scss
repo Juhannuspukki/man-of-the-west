@@ -13,9 +13,12 @@
       .character {
         text-decoration: none;
         &:hover {
-          .svg-container svg, h3{
-            color: $hover-color;
-            fill: $hover-color;
+          .svg-container svg{
+            fill: var(--local-svg-gradient);
+          }
+          h3 {
+            background: var(--local-gradient);
+            @include gradient-text;
           }
         }
         .svg-container {
