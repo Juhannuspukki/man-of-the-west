@@ -6,6 +6,8 @@ site/data/webpack.json
 resources/_gen/
 .vercel
 .wrangler
+.vscode
 public/
 assets/images/
 assets/optimized_images/
+config.toml
