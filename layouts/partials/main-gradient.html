@@ -1,11 +1,14 @@
+{{ $defaultPalette := "#ff9a9e, #fad0c4, #a18cd1" }}
 {{ $palette := "" }}
 {{ if .IsHome }}
     {{ $paginator := .Paginate (where .Site.RegularPages "Type" "osa-iv") }}
     {{ with index $paginator.Pages 0 }}
-        {{ $palette = .Params.palette }}
+        {{ $palette = default $defaultPalette .Params.palette }}
+    {{ else }}
+        {{ $palette = $defaultPalette }}
     {{ end }}
 {{ else }}
-    {{ $palette = .Params.palette }}
+    {{ $palette = default $defaultPalette .Params.palette }}
 {{ end }}
 {{ with $palette }}
     <style>
