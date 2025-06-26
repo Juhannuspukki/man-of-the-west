@@ -1,0 +1,26 @@
+baseurl = "https://example.com"
+languageCode = "fi"
+defaultContentLanguage = "fi"
+title = "Example"
+pagination.path = "sivu"
+timeout = 100000
+pagination.pagerSize = 30
+summaryLength = 10
+
+[params]
+staticurl = "https://static.example.com"
+
+[languages]
+  [languages.fi]
+    languageCode = "fi"
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[taxonomies]
+  "henkilöhahmo" = "henkilöhahmot"
+
+# RSS, categories and tags disabled for an easy start
+# See configuration options for more details:
+# https://gohugo.io/getting-started/configuration/#toml-configuration
+disableKinds = ['categories', 'tags']
