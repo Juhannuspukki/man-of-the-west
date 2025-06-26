@@ -109,3 +109,44 @@
         transition: filter 0.2s ease-in-out;
     }
 }
+
+.character-card {
+  display: block;
+  margin-bottom: 3rem;
+  .read-more {
+      font-family: $header-font;
+      text-transform: uppercase;
+  }
+  .headline-container {
+    display: grid;
+    grid-template-columns: min-content auto;
+    gap: 1.5rem;
+    height: 100%;
+    justify-content: stretch;
+    h3 {
+      font-size: 2rem;
+      margin: 0;
+    }
+    .svg-container {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      svg {
+        height: 1.5rem;
+       overflow: visible;
+        path {
+          fill: #fff;
+        }
+      }
+    }
+  }
+  &:hover {
+      h3, p {
+          background: var(--local-gradient);
+          @include gradient-text;
+      }
+      .svg-container svg path{
+        fill: var(--local-svg-gradient);
+      }
+  }
+}

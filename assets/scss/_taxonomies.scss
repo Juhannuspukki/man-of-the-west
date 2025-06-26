@@ -48,22 +48,3 @@
     }
     margin-bottom: 3rem;
 }
-
-
-.character-card {
-    display: block;
-    margin-bottom: 3rem;
-    .read-more {
-        font-family: $header-font;
-        text-transform: uppercase;
-    }
-    &:hover {
-        h3, p {
-            background: var(--local-gradient);
-            @include gradient-text;
-        }
-    }
-    h3 {
-        margin: 0 0 1rem;
-    }
-}

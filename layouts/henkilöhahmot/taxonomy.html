@@ -7,11 +7,7 @@
     </section>
     <section>
       {{ range sort .Pages "Date" "asc" }}
-        <a href="{{ .RelPermalink }}" class="character-card" style="--local-gradient: linear-gradient(45deg, {{ .Params.palette | safeCSS }});">
-          <h3>{{ .Title }}</h3>
-          {{ .Content }}
-          <p class="read-more"><strong>Lue lisää&nbsp;→</strong></p>
-        </a>
+       {{ partial "character-card-taxonomy" . }}
       {{ end }}
     </section>
 </main>
