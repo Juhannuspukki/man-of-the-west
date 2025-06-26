@@ -8,14 +8,7 @@
 
 <a class="article-card no-underline{{ if $isFirst }} first-article{{ end }}" 
    href="{{ $page.RelPermalink }}" 
-   data-gradient="{{ $page.RelPermalink | md5 }}">
-  {{ with $page.Params.palette }}
-    <style>
-      .article-card[data-gradient="{{ $page.RelPermalink | md5 }}"] {
-        --local-gradient: linear-gradient(45deg, {{ . | safeCSS }});
-      }
-    </style>
-  {{ end }}
+   style="--local-gradient: linear-gradient(45deg, {{ $page.Params.palette | safeCSS }});">
   {{ if $page.Params.banner }}
     {{ if $isFirst }}
       {{ partial "responsive-image.html" (dict "class" "article-card-banner" "src" $page.Params.banner "alt" "" "sizes" "(max-width: 600px) calc(100vw - 2rem), 568px") }}

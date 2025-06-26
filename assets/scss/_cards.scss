@@ -5,7 +5,6 @@
     margin-bottom: 2rem;
     transition: all 0.1s ease-in-out;
     cursor: pointer;
-  
     &.first-article {
       grid-template-columns: calc(75% - 0.5rem) calc(25% - 0.5rem);
       margin-bottom: 4rem;
@@ -13,7 +12,6 @@
         grid-template-columns: 100%;
       }
     }
-    
     .article-card-banner {
       height: 100%;
       width: 100%;
