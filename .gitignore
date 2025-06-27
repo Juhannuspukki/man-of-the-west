@@ -7,6 +7,8 @@ resources/_gen/
 .vercel
 .wrangler
 .vscode
+.env
+windsurf.json
 public/
 assets/images/
 assets/images
