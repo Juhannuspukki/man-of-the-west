@@ -4,6 +4,18 @@
         {{ range .Params.henkilöhahmot }}
             {{ with site.GetPage (printf "/henkilöhahmot/%s" .) }}
                 <a href="{{ .RelPermalink }}" class="character" data-gradient="{{ .RelPermalink | md5 }}">
+                    <div class="svg-container">
+                        {{ $iconPath := printf "icons/%s" .Params.symbol }}
+                        {{ $partialPath := printf "partials/%s.html" $iconPath }}
+                        {{ if templates.Exists $partialPath }}
+                            {{ partial $iconPath . }}
+                        {{ else }}
+                            {{ if .File }}
+                                {{ warnf "Partial '%s' not found. File path: %s" $iconPath .File.Path }}
+                            {{ end }}
+                        {{ end }}
+                    </div>
+                    <h3>{{ .Title }}</h3>
                     {{ if .Params.palette }}
                         <style>
                             .character[data-gradient="{{ .RelPermalink | md5 }}"] {
@@ -21,18 +33,6 @@
                             </defs>
                         </svg>
                     {{ end }}
-                    <div class="svg-container">
-                        {{ $iconPath := printf "icons/%s" .Params.symbol }}
-                        {{ $partialPath := printf "partials/%s.html" $iconPath }}
-                        {{ if templates.Exists $partialPath }}
-                            {{ partial $iconPath . }}
-                        {{ else }}
-                            {{ if .File }}
-                                {{ warnf "Partial '%s' not found. File path: %s" $iconPath .File.Path }}
-                            {{ end }}
-                        {{ end }}
-                    </div>
-                    <h3>{{ .Title }}</h3>
                 </a>
             {{ end }}
         {{ end }}

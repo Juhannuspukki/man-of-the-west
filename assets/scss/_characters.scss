@@ -12,6 +12,9 @@
       justify-content: center;
       .character {
         text-decoration: none;
+        > svg {
+          position: absolute; // hack to prevent style svg from taking space on DOM
+        }
         &:hover {
           .svg-container svg{
             fill: var(--local-svg-gradient);
