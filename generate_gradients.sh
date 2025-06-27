@@ -15,6 +15,13 @@ HUE_PENALTY_THRESHOLD=30
 PERCENTAGE_WEIGHT=250       # Penalty strength for low-percentage colors
 PERCENTAGE_THRESHOLD=0.02 # Threshold below which colors are penalized
 
+OVERWRITE=false
+for arg in "$@"; do
+  if [[ "$arg" == "--overwrite" ]]; then
+    OVERWRITE=true
+  fi
+done
+
 rgb_to_hex() {
   IFS=',' read -r r g b <<<"${1// /}"
   printf "#%02x%02x%02x" "$r" "$g" "$b"
@@ -90,6 +97,13 @@ brighten_rgb() {
 
 find "$CONTENT_DIR" -type f -name "*.md" | while read -r md_file; do
   echo "Processing $md_file"
+
+  # Check for existing .palette
+  existing_palette=$(yq eval --front-matter=extract '.palette' "$md_file" 2>/dev/null || echo "")
+  if [[ "$existing_palette" != "null" && -n "$existing_palette" && "$OVERWRITE" != "true" ]]; then
+    echo "  Skipping (palette already exists; use --overwrite to force)"
+    continue
+  fi
   start_time=$(date +%s.%N)
 
   banner_path=$(yq eval --front-matter=extract '.banner' "$md_file" 2>/dev/null || echo "")
