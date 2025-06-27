@@ -9,5 +9,6 @@ resources/_gen/
 .vscode
 public/
 assets/images/
+assets/images
 assets/optimized_images/
 config.toml

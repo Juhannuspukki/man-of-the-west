@@ -1,0 +1,28 @@
+{{ define "main" }}
+
+<main class="container">
+  {{ partial "header-list" . }}
+  <section class="taxonomy-content">
+    {{ .Content }}
+  </section>
+
+  {{ $paginator := .Paginate (sort .Pages "Date" "desc") 10 }}
+  
+  <section class="taxonomy-articles">
+    {{ range $paginator.Pages }}
+        <div class="term-group">
+          <h2>{{ .Title }}</h2>
+          <div class="taxonomy-article-cards">
+            {{ range sort .Pages "Date" "asc" }}
+                {{ partial "article-card-compact" . }}
+            {{ end }}
+          </div>
+        </div>
+    {{ end }}
+  </section>
+  <div class="pagination-container">
+    {{ partial "pagination.html" . }}
+  </div>
+</main>
+
+{{ end }}

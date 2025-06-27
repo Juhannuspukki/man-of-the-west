@@ -19,6 +19,7 @@ staticurl = "https://static.example.com"
 
 [taxonomies]
   "henkilöhahmo" = "henkilöhahmot"
+  "reissu" = "reissut"
 
 # RSS, categories and tags disabled for an easy start
 # See configuration options for more details:
