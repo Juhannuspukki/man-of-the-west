@@ -1,4 +1,7 @@
 .single-header {
+  @media only screen and (max-width: 856px) {
+    overflow: hidden;
+  }
   .title-container {
     margin: 2rem auto;
     max-width: 850px;
@@ -25,18 +28,43 @@
       font-weight: 400;
     }
   }
-  .hero {
+  .hero-container {
     position: relative;
-    aspect-ratio: 16/10;
-    width: calc(100% - 2rem);
-    max-width: 768px;
     display: block;
-    margin: 0 auto 3rem;
-    object-fit: cover;
-    transition: all 0.1s ease-in-out;
     background: var(--gradient);
+    background-size: cover;
+    max-width: 768px;
+    margin: 0 auto 3rem;
+    border-radius: $border-radius;
+    transition: all 0.1s ease-in-out;
+    .stamp {
+      position: absolute;
+      top: -2.5rem;
+      right: -2.5rem;
+      height: 8rem;
+      transform: rotate(17.5deg);
+      filter: drop-shadow( 0 0 5px rgba(0, 0, 0, .7));
+      path {
+        fill: #FFF;
+      }
+      ellipse {
+        stroke: #FFF; 
+      }
+      @media only screen and (max-width: 856px) {
+        top: -1.5rem;
+        right: -0.75rem;
+        height: 6rem;
+      }
+    }
+    .hero {
+      aspect-ratio: 16/10;
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
     &:hover {
       transform: scale(1.02, 1.02);
+      background: none;
     }
   }
 }
