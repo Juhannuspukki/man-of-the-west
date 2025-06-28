@@ -1,0 +1,17 @@
+{{ $color1 := index (split .Params.palette ",") 0 }}
+{{ $color2 := index (split .Params.palette ",") 1 }}
+{{ $color3 := index (split .Params.palette ",") 2 }}
+
+<defs>
+    <linearGradient id="local-gradient-{{ .RelPermalink | md5 }}" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="{{ $color1 }}">
+            <animate attributeName="stop-color" values="{{ $color1 }};{{ $color2 }};{{ $color3 }};{{ $color1 }}" dur="4s" repeatCount="indefinite"/>
+        </stop>
+        <stop offset="50%" stop-color="{{ $color2 }}">
+            <animate attributeName="stop-color" values="{{ $color2 }};{{ $color3 }};{{ $color1 }};{{ $color2 }}" dur="4s" repeatCount="indefinite"/>
+        </stop>
+        <stop offset="100%" stop-color="{{ $color3 }}">
+            <animate attributeName="stop-color" values="{{ $color3 }};{{ $color1 }};{{ $color2 }};{{ $color3 }}" dur="4s" repeatCount="indefinite"/>
+        </stop>
+    </linearGradient>
+</defs>

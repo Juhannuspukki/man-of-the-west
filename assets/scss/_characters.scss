@@ -1,46 +1,66 @@
 .character-showcase {
-    h2 {
-      font-size: 1.25rem;
-      margin-bottom: 0.5rem;
-      font-weight: 700;
-      text-align: center;
-    }
-    .character-grid {
-      display: flex;  
-      gap: 2rem;
-      margin-bottom: 3rem;
-      justify-content: center;
-      .character {
-        text-decoration: none;
-        > svg {
-          position: absolute; // hack to prevent style svg from taking space on DOM
+  h2 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .character-grid {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    justify-content: center;
+
+    .character {
+      text-decoration: none;
+
+      >svg {
+        position: absolute; // hack to prevent style svg from taking space on DOM
+      }
+
+      &:hover {
+        .svg-container svg {
+          fill: var(--local-svg-gradient);
         }
-        &:hover {
-          .svg-container svg{
-            fill: var(--local-svg-gradient);
-          }
-          h3 {
-            background: var(--local-gradient);
-            @include gradient-text;
-          }
-        }
-        .svg-container {
-          height: 4rem;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          svg {
-            fill: #fff;
-            height: 100%;
-            max-height: 2.5rem;
-            max-width: 3rem;
-          }
-        }
+
         h3 {
-          margin: 0 auto;
-          text-align: center;
-          font-size: 1rem;
+          background: var(--local-gradient);
+          background-size: 9rem 100%;
+          animation: slidebg 90s linear infinite;
+          @include gradient-text;
         }
+      }
+
+      .svg-container {
+        height: 4rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        svg {
+          fill: #fff;
+          height: 100%;
+          max-height: 2.5rem;
+          max-width: 3rem;
+        }
+      }
+
+      h3 {
+        margin: 0 auto;
+        text-align: center;
+        font-size: 1rem;
       }
     }
   }
+}
+
+@keyframes slidebg {
+  0% {
+    background-position: 0;
+  }
+
+  100% {
+    background-position: 120vw;
+  }
+}

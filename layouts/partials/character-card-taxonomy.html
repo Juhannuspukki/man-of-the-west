@@ -1,17 +1,8 @@
 
 <a href="{{ .RelPermalink }}" class="character-card" style="--local-gradient: linear-gradient(45deg, {{ .Params.palette | safeCSS }}); --local-svg-gradient: url(#local-gradient-{{ .RelPermalink | md5 }}">
-    <svg width="0" height="0">
-        <defs>
-            <linearGradient id="local-gradient-{{ .RelPermalink | md5 }}" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="{{ index (split .Params.palette ",") 0 }}"/>
-                <stop offset="50%" stop-color="{{ index (split .Params.palette ",") 1 }}"/>
-                <stop offset="100%" stop-color="{{ index (split .Params.palette ",") 2 }}"/>
-            </linearGradient>
-        </defs>
-    </svg>
     <div class="headline-container">
         <div class="svg-container">
-            {{ $iconPath := printf "icons/%s" .Params.symbol }}
+            {{ $iconPath := printf "icons/character-icons/%s" .Params.symbol }}
             {{ $partialPath := printf "partials/%s.html" $iconPath }}
             {{ if templates.Exists $partialPath }}
                 {{ partial $iconPath . }}
@@ -24,5 +15,4 @@
         <h3>{{ .Title }}</h3>
     </div>
     {{ .Content }}
-    <p class="read-more"><strong>Lue lisää&nbsp;→</strong></p>
 </a>

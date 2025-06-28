@@ -3,7 +3,7 @@
         <div class="weather-item">
             <h2>{{ .city }}</h2>
             <div class="weather-data">
-                {{ $iconPath := printf "icons/%s" .symbol }}
+                {{ $iconPath := printf "icons/weather-icons/%s" .symbol }}
                 {{ $partialPath := printf "partials/%s.html" $iconPath }}
                 {{ if templates.Exists $partialPath }}
                     {{ partial $iconPath . }}
@@ -11,13 +11,13 @@
                     {{ errorf "Partial '%s' not found. File path: %s" $iconPath $.filePath }}
                 {{ end }}
                 <div>
-                    {{ partial "icons/temperature-max" . }} <span>{{ .tempMax }}°C</span>
+                    {{ partial "icons/weather-icons/temperature-max" . }} <span>{{ .tempMax }}°C</span>
                 </div>
                 <div>
-                    {{ partial "icons/wind" . }} <span>{{ .wind }} m/s</span>
+                    {{ partial "icons/weather-icons/wind" . }} <span>{{ .wind }} m/s</span>
                 </div>
                 <div>
-                    {{ partial "icons/temperature-min" . }} <span>{{ .tempMin }}°C</span>
+                    {{ partial "icons/weather-icons/temperature-min" . }} <span>{{ .tempMin }}°C</span>
                 </div>
                 <div>
                     {{ $aqi := float .aqi }}
@@ -63,7 +63,7 @@
                     
                     {{ $aqiColor := printf "rgb(%d, %d, %d)" (int (math.Round $r)) (int (math.Round $g)) (int (math.Round $b)) }}
                     
-                    {{ partial "icons/lungs" . }}
+                    {{ partial "icons/weather-icons/lungs" . }}
                     <span>AQI {{ .aqi }}</span>
                     <div class="dot" style="background-color: {{ $aqiColor | safeCSS }}"></div>
                 </div>

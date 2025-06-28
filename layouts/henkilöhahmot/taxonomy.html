@@ -5,7 +5,7 @@
     <section class="taxonomy-content">
       {{ .Content }}
     </section>
-    <section>
+    <section class="character-card-grid">
       {{ range sort .Pages "Date" "asc" }}
         {{ partial "character-card-taxonomy" . }}
       {{ end }}

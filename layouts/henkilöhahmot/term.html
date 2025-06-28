@@ -7,7 +7,7 @@
         <header class="character-header">
             <p class="pre-title">Henkilöhahmot:</p>
             <h1>{{ .Title }}</h1>
-            {{ $iconPath := printf "icons/%s" .Params.symbol }}
+            {{ $iconPath := printf "icons/character-icons/%s" .Params.symbol }}
             {{ $partialPath := printf "partials/%s.html" $iconPath }}
             {{ if templates.Exists $partialPath }}
                 {{ partial $iconPath . }}
@@ -21,13 +21,10 @@
                 <time class="date" datetime="{{ .Date.Format "2006-01-02" }}">{{ time.Format "Mon 2.1.2006" .Params.date}}</time>
             {{ end }}
         </header>
-
         <section class="character-content">
             {{ .Content }}
         </section>
-
     </article>
-
     <section class="related-content">
         <h2>Jaksot, joissa {{ .Title }} on mukana</h2>
         <p class="articles">{{ len .Pages }} artikkelia</p>
