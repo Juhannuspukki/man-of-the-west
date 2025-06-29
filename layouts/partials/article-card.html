@@ -1,7 +1,9 @@
-{{/* Handle all possible calling conventions */}}
 {{ $page := . }}
 {{ $isFirst := false }}
-{{ if isset . "context" }}
+
+{{ $isDict := eq (printf "%T" .) "map[string]interface {}" }}
+
+{{ if $isDict }}
   {{ $page = .context }}
   {{ $isFirst = .first | default false }}
 {{ end }}
