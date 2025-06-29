@@ -60,6 +60,7 @@
       width: 100%;
       display: block;
       object-fit: cover;
+      background: var(--gradient);
     }
     &:hover {
       transform: scale(1.02, 1.02);

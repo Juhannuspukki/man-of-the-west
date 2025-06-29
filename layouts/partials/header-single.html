@@ -28,8 +28,7 @@
         <a 
             href="{{ $url }}-2560w.avif" 
             aria-label="Täysikokoinen kuva" 
-            class="hero-container"
-            style="--local-placeholder: url(data:image/avif;base64,{{ .Params.thumbnail | safeURL }})">
+            class="hero-container">
             {{ partial "responsive-image.html" (dict "class" "hero" "src" .Params.banner "alt" "" "sizes" "(max-width: 768px) calc(100vw - 2rem), 768px") }}
             {{ if .Params.stamp }}
                 {{ partial "stamp.html" . }}

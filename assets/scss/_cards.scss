@@ -20,6 +20,7 @@
     width: 100%;
     aspect-ratio: 16/10; // bogus aspect ratio to ensure images are not taller than text next to them
     object-fit: cover;
+    background: var(--local-gradient);
   }
 
   .article-card-summary-container {
@@ -132,6 +133,7 @@
     width: 100%;
     aspect-ratio: 16/10;
     object-fit: cover;
+    background: var(--local-gradient);
     transition: filter 0.2s ease-in-out;
   }
 }

@@ -24,19 +24,16 @@
 
       {{ if $img }}
         <img 
-            onload="this.style.opacity = 1"
             class="{{ $class }}"
             src="{{ $img.RelPermalink }}"
             sizes="{{ $sizes }}"
             alt="{{ $alt }}"
-            style="opacity: 0;"
         >
         {{ else }}
           {{ warnf "Image %s not found" $src }}
       {{ end }}
   {{ else }}
       <img 
-          onload="this.style.opacity = 1"
           class="{{ $class }}"
           src="{{ $url }}-512w.webp"
           srcset="{{ $url }}-384w.avif 384w,
@@ -49,7 +46,6 @@
           {{ $url }}-2560w.avif 2560w"
           sizes="{{ $sizes }}"
           alt="{{ $alt }}"
-          style="opacity: 0;"
       >
   {{ end }}
 </div>

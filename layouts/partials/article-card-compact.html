@@ -1,5 +1,5 @@
 <a href="{{ .RelPermalink }}" class="article-card-compact">
-    <div class="article-card-compact-content">
+    <div class="article-card-compact-content" style="--local-gradient: linear-gradient(45deg, {{ .Params.palette | safeCSS }});">
         <time class="date" datetime="{{ .Date.Format "2006-01-02" }}">{{ time.Format "Mon 2.1.2006" .Params.date}}</time>
         <h3>{{ .Title }}</h3>
     </div>

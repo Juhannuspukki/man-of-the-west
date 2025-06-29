@@ -39,6 +39,7 @@
       margin: 0;
       padding: 0;
       object-fit: cover;
+      background: var(--gradient);
     }
     .list-header-title-container {
       position: absolute;
@@ -179,10 +180,8 @@
     content: '';
     position: absolute;
     top: -0.5rem; left: -0.5rem; right: -0.5rem; bottom: -0.5rem;
-    background: var(--local-placeholder);
     background-size: cover;
     background-position: center;
-    filter: blur(6px);
     z-index: -1;
   }
 }
