@@ -17,33 +17,39 @@
 
 {{ $url := printf "%s/%s/%s" site.Params.staticurl $dirname $basename }}
 
-{{ if eq hugo.Environment "development" }}
+<div class="responsive-image"> 
+  {{ if eq hugo.Environment "development" }}
 
-    {{ $img := resources.Get (printf "images/%s" $src) }}
+      {{ $img := resources.Get (printf "images/%s" $src) }}
 
-    {{ if $img }}
+      {{ if $img }}
+        <img 
+            onload="this.style.opacity = 1"
+            class="{{ $class }}"
+            src="{{ $img.RelPermalink }}"
+            sizes="{{ $sizes }}"
+            alt="{{ $alt }}"
+            style="opacity: 0;"
+        >
+        {{ else }}
+          {{ warnf "Image %s not found" $src }}
+      {{ end }}
+  {{ else }}
       <img 
+          onload="this.style.opacity = 1"
           class="{{ $class }}"
-          src="{{ $img.RelPermalink }}"
+          src="{{ $url }}-512w.webp"
+          srcset="{{ $url }}-384w.avif 384w,
+          {{ $url }}-512w.avif 512w,
+          {{ $url }}-640w.avif 640w,
+          {{ $url }}-768w.avif 768w,
+          {{ $url }}-1024w.avif 1024w,
+          {{ $url }}-1280w.avif 1280w,
+          {{ $url }}-1920w.avif 1920w,
+          {{ $url }}-2560w.avif 2560w"
           sizes="{{ $sizes }}"
           alt="{{ $alt }}"
+          style="opacity: 0;"
       >
-      {{ else }}
-        {{ warnf "Image %s not found" $src }}
-    {{ end }}
-{{ else }}
-    <img 
-        class="{{ $class }}"
-        src="{{ $url }}-512w.webp"
-        srcset="{{ $url }}-384w.avif 384w,
-        {{ $url }}-512w.avif 512w,
-        {{ $url }}-640w.avif 640w,
-        {{ $url }}-768w.avif 768w,
-        {{ $url }}-1024w.avif 1024w,
-        {{ $url }}-1280w.avif 1280w,
-        {{ $url }}-1920w.avif 1920w,
-        {{ $url }}-2560w.avif 2560w"
-        sizes="{{ $sizes }}"
-        alt="{{ $alt }}"
-    >
-{{ end }}
+  {{ end }}
+</div>

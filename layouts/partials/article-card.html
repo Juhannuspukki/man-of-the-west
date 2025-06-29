@@ -8,12 +8,12 @@
 
 <a class="article-card no-underline{{ if $isFirst }} first-article{{ end }}" 
    href="{{ $page.RelPermalink }}" 
-   style="--local-gradient: linear-gradient(45deg, {{ $page.Params.palette | safeCSS }});">
+   style="--local-gradient: linear-gradient(45deg, {{ $page.Params.palette | safeCSS }}); --local-placeholder: url(data:image/avif;base64,{{ $page.Params.thumbnail | safeURL }})">
   {{ if $page.Params.banner }}
     {{ if $isFirst }}
-      {{ partial "responsive-image.html" (dict "class" "article-card-banner" "src" $page.Params.banner "alt" "" "sizes" "(max-width: 600px) calc(100vw - 2rem), 568px") }}
+      {{ partial "responsive-image.html" (dict "class" "article-card-image" "src" $page.Params.banner "alt" "" "sizes" "(max-width: 600px) calc(100vw - 2rem), 568px") }}
     {{ else }}
-      {{ partial "responsive-image.html" (dict "class" "article-card-banner" "src" $page.Params.banner "alt" "" "sizes" "(max-width: 600px) calc(100vw - 2rem), 300px") }}
+      {{ partial "responsive-image.html" (dict "class" "article-card-image" "src" $page.Params.banner "alt" "" "sizes" "(max-width: 600px) calc(100vw - 2rem), 300px") }}
     {{ end }}
   {{ end }}
   <div class="article-card-summary-container">
@@ -29,4 +29,3 @@
     <span class="read-more"><strong>Lisää&nbsp;→</strong></span>
   </div>
 </a>
-

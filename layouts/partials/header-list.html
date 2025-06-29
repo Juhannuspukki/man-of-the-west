@@ -3,7 +3,11 @@
     {{ $dirname := path.Dir .Params.banner }}
     {{ $basename := replaceRE "\\.[^.]+$" "" (path.Base .Params.banner) }}
     {{ $url := printf "%s/%s/%s" .Site.Params.staticurl $dirname $basename }}
-    <a class="header-link" href="{{ $url }}-2560w.avif" aria-label="Täysikokoinen kuva">
+    <a 
+      class="header-link" 
+      href="{{ $url }}-2560w.avif" 
+      aria-label="Täysikokoinen kuva"
+      style="--local-placeholder: url(data:image/avif;base64,{{ .Params.thumbnail | safeURL }})">
       {{ partial "responsive-image.html" (dict "class" "hero" "src" .Params.banner "alt" "" "sizes" "(max-width: 768px) calc(100vw - 2rem), 768px") }}
       <div class="list-header-title-container">
         <h1 class="main-title">{{ .Title }}</h1>

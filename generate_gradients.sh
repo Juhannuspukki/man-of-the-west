@@ -96,7 +96,7 @@ brighten_rgb() {
 }
 
 find "$CONTENT_DIR" -type f -name "*.md" | while read -r md_file; do
-  echo "Processing $md_file"
+  echo "🎨  Processing $md_file"
 
   # Check for existing .palette
   existing_palette=$(yq eval --front-matter=extract '.palette' "$md_file" 2>/dev/null || echo "")

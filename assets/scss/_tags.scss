@@ -54,10 +54,12 @@ p, ul, ol {
   font-variation-settings: "wght" 50;
   font-weight: $bread-weight;
   color: #fff;
+  line-height: 1.55; // set explicitly to avoid layout shift
 }
 
 img, video {
   border-radius: $border-radius;
+  transition: filter 0.2s ease-in-out, opacity 0.1s ease-in-out;
 }
 
 figure {
